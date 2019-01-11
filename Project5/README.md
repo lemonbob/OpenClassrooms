@@ -1,6 +1,6 @@
-Project 5 of OpenClassrooms Front-end Developer Course
+# Project 5 
 
-Code a random quotation generator:
+OpenClassrooms Front-end Developer Course: code a random quotation generator.
 
 This project was specially designed for those new to the JavaScript programming and algorithms. Your objective will be both simple and fun: you will build a random quote generator! The quotes will be randomly constructed by assembling different pieces of a sentence.
 
