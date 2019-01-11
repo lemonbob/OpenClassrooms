@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X8 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" height="100%" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 3210 3210"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:42.33}
+    .fil1 {fill:black}
+    .fil0 {fill:url(#id0)}
+    .fil2 {fill:url(#id1)}
+    .fil5 {fill:url(#id2)}
+    .fil3 {fill:url(#id3)}
+    .fil4 {fill:url(#id4);fill-opacity:0.501961}
+   ]]>
+  </style>
+  <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="852.26" y1="2962.41" x2="2357.34" y2="247.19">
+   <stop offset="0" style="stop-opacity:1; stop-color:#303838"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#C6DEDA"/>
+  </linearGradient>
+  <linearGradient id="id1" gradientUnits="userSpaceOnUse" x1="3024.36" y1="2353.29" x2="185.24" y2="856.31">
+   <stop offset="0" style="stop-opacity:1; stop-color:#213430"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#9DB0A7"/>
+  </linearGradient>
+  <linearGradient id="id2" gradientUnits="userSpaceOnUse" x1="1487.45" y1="928.08" x2="1722.14" y2="928.08">
+   <stop offset="0" style="stop-opacity:1; stop-color:#630202"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:red"/>
+  </linearGradient>
+  <radialGradient id="id3" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.49603 1.49605 -0.748023 0.748017 -319 -3014)" cx="2186.63" cy="1022.97" r="1115.17" fx="2186.63" fy="1022.97">
+   <stop offset="0" style="stop-opacity:1; stop-color:#0D4A52"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#DFEBE6"/>
+  </radialGradient>
+  <radialGradient id="id4" gradientUnits="userSpaceOnUse" gradientTransform="matrix(1.49604 1.49604 -0.74802 0.74802 1128 -979)" cx="1022.97" cy="2186.63" r="1115.17" fx="1022.97" fy="2186.63">
+   <stop offset="0" style="stop-opacity:1; stop-color:#396E5C"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:white"/>
+  </radialGradient>
+ </defs>
+ <g id="NumQuote">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_642463552">
+   <circle class="fil0" cx="1605" cy="1605" r="1552"/>
+   <circle class="fil1" cx="1605" cy="1605" r="1242"/>
+   <path class="fil2" d="M1605 0c443,0 844,180 1135,470 290,290 470,692 470,1135 0,443 -180,844 -470,1135 -291,290 -692,470 -1135,470 -443,0 -845,-180 -1135,-470 -290,-291 -470,-692 -470,-1135 0,-443 180,-845 470,-1135 290,-290 692,-470 1135,-470zm1060 544c-271,-271 -646,-439 -1060,-439 -414,0 -789,168 -1061,439 -271,272 -439,647 -439,1061 0,414 168,789 439,1060 272,272 647,439 1061,439 414,0 789,-167 1060,-439 272,-271 439,-646 439,-1060 0,-414 -167,-789 -439,-1061z"/>
+   <polygon class="fil3" points="1605,393 1722,463 1849,417 1946,509 2077,488 2152,596 2283,600 2335,720 2462,748 2490,875 2610,927 2614,1058 2722,1133 2700,1264 2792,1361 2746,1487 2817,1605 2746,1722 2792,1849 2700,1946 2722,2077 2614,2152 2610,2283 2490,2335 2462,2462 2335,2490 2283,2610 2152,2614 2077,2722 1946,2700 1849,2792 1722,2746 1605,2817 1487,2746 1361,2792 1264,2700 1133,2722 1058,2614 927,2610 875,2490 748,2462 720,2335 600,2283 596,2152 488,2077 509,1946 417,1849 463,1722 393,1605 463,1487 417,1361 509,1264 488,1133 596,1058 600,927 720,875 748,748 875,720 927,600 1058,596 1133,488 1264,509 1361,417 1487,463 "/>
+   <polygon class="fil4" points="1605,393 1722,463 1849,417 1946,509 2077,488 2152,596 2283,600 2335,720 2462,748 2490,875 2610,927 2614,1058 2722,1133 2700,1264 2792,1361 2746,1487 2817,1605 2746,1722 2792,1849 2700,1946 2722,2077 2614,2152 2610,2283 2490,2335 2462,2462 2335,2490 2283,2610 2152,2614 2077,2722 1946,2700 1849,2792 1722,2746 1605,2817 1487,2746 1361,2792 1264,2700 1133,2722 1058,2614 927,2610 875,2490 748,2462 720,2335 600,2283 596,2152 488,2077 509,1946 417,1849 463,1722 393,1605 463,1487 417,1361 509,1264 488,1133 596,1058 600,927 720,875 748,748 875,720 927,600 1058,596 1133,488 1264,509 1361,417 1487,463 "/>
+   <path class="fil5 str0" d="M1605 393l117 70 0 883c0,65 -53,118 -117,118l0 0c-65,0 -118,-53 -118,-118l0 -883 118 -70z"/>
+  </g>
+ </g>
+</svg>

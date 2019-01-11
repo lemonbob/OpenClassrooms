@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X8 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="100%" height="100%" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1990 868"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#6B8181}
+    .fil2 {fill:#FEFEFE}
+    .fil0 {fill:url(#id1)}
+    .fil4 {fill:url(#id2);fill-opacity:0.200000}
+    .fil3 {fill:url(#id3);fill-opacity:0.200000}
+   ]]>
+  </style>
+     <clipPath id="id0">
+      <path d="M259 87l1471 0c88,0 160,72 160,160l0 374c0,88 -72,160 -160,160l-1471 0c-88,0 -160,-72 -160,-160l0 -374c0,-88 72,-160 160,-160z"/>
+     </clipPath>
+  <radialGradient id="id1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(-0.177192 -0.438311 2.00984 -0.154574 429 308)" cx="497.41" cy="78.1" r="974.93" fx="497.41" fy="78.1">
+   <stop offset="0" style="stop-opacity:1; stop-color:#FEFEFE"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#6B8181"/>
+  </radialGradient>
+  <linearGradient id="id2" gradientUnits="objectBoundingBox" x1="0.00307021%" y1="50%" x2="100.003%" y2="50%">
+   <stop offset="0" style="stop-opacity:1; stop-color:black"/>
+   <stop offset="0.2" style="stop-opacity:1; stop-color:#4B595A"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#97B2B5"/>
+  </linearGradient>
+  <linearGradient id="id3" gradientUnits="objectBoundingBox" xlink:href="#id2" x1="0.00307021%" y1="50%" x2="100.003%" y2="50%">
+  </linearGradient>
+ </defs>
+ <g id="Mode">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_761441136">
+   <rect class="fil0" width="1990" height="868" rx="200" ry="200"/>
+   <g>
+    <g style="clip-path:url(#id0)">
+     <polygon class="fil1" points="99,87 99,87 99,781 99,781 "/>
+     <polygon id="1" class="fil2" points="-348,87 1890,87 1890,781 -348,781 "/>
+    </g>
+   </g>
+   <polygon class="fil3" points="913,87 1076,87 1076,781 913,781 "/>
+   <polygon class="fil3" points="588,87 751,87 751,781 588,781 "/>
+   <polygon class="fil3" points="262,87 425,87 425,781 262,781 "/>
+   <polygon class="fil4" points="1239,87 1402,87 1402,781 1239,781 "/>
+   <polygon class="fil4" points="1565,87 1727,87 1727,781 1565,781 "/>
+  </g>
+ </g>
+</svg>
