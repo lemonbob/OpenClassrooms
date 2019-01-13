@@ -22,6 +22,7 @@ function getRandomIndex(len) {
 
 function initiateSimpleQuote(number,outputElement){
 	var n,i;
+	
 	quote = "";
 	for (i=0;i<number;i++){
 		quote += (i+1) + ". "; 
