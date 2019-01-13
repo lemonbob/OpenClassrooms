@@ -20,6 +20,7 @@
 	var i;
 	var rect;
 	var controlAttributes = [];
+	
 	controlAttributes[0] = {};
 	controlAttributes[1] = {};
 	controlAttributes[2] = {};
@@ -75,6 +76,7 @@
 
 	//determine if browser supports passive event handler in supportsPassive?? query
 	var supportsPassive = false;
+	
 	try {
 		var opts = Object.defineProperty({}, 'passive', {
 			get: function() {
@@ -152,6 +154,7 @@
 	function setMousePosition(event,index){
 		var touch;
 		var cx,cy,angle;
+		
 		event.preventDefault();
 		if (event.type === "touchstart"){
 			touchEventFlag = true;
@@ -172,6 +175,7 @@
 
 	function calculateKnobLocation(x,y,index){
 		var cx,cy,angle;
+		
 		cx = x-controlAttributes[index].centreX;
 		cy = y-controlAttributes[index].centreY;
 		cy = -cy;
@@ -201,6 +205,8 @@
 	//If pointer status is true (or active) use horizontal swipe or mouse drag to change control knob location
 	function changeKnobPosition(event, index){
 		var incLocation, newLocation, touch;
+		
+		event.preventDefault();
 		if (event.type === "touchmove" && mouseDownFlag === true){
 			var touch = event.targetTouches[0];
 			calculateKnobLocation(touch.clientX,touch.clientY,index);
