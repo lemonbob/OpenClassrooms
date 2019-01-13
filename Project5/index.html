@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Quotation Generator</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0" >
+	<link rel="stylesheet" href="css/roboquote.css">
+	<link href="https://fonts.googleapis.com/css?family=Codystar" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+		
+</head>
+
+<body>
+	<div id="bgOverlay"></div>
+	<div id="boxBorder">
+		<div id="box">
+			<section id="leftPane">
+
+				<div id="quoteButton"><img src="img/cntr_button.svg">
+					<div id="button"><img src="img/button.svg"></div>
+				</div>
+				<div id="cntrText" class="img-shadow"><img src="img/cntr_text.svg">
+					<div id="inputWrapper"><input id="quoteInput" class="rq-font" type="text" name="noun" value="wisdom"></div>
+					<div class="is-active-light"></div>
+				</div>
+
+
+				<div class="knob-wrapper event-controller"><img src="img/cntr_number.svg">
+					<div class="control-knob"><img class="knob-image" src="img/knob.svg"></div>
+					<div class="is-active-light"></div>
+				</div>
+				<div id="cntrMode" class="event-controller"><img src="img/cntr_mode.svg">
+					<div id="slider" class="knob-image img-shadow control-knob"><img src="img/slider.svg"></div>
+				</div>
+				<div class="knob-wrapper event-controller"><img src="img/cntr_scope.svg">
+					<div class="control-knob"><img class="knob-image" src="img/knob.svg"></div>
+					<div class="is-active-light"></div>
+				</div>
+				<div id="name">ROBOQuote 9000</div>
+
+			</section>
+			<div id="screen" class="img-shadow"><img src="img/screen.svg">
+				<div id="outputWindow" class="rq-font">
+					<h1>I am RoboQuote:-)</h1>
+					<br>
+					<p>Instructions:</p>
+					<br>
+					<p>To adjust controls, click and slide horizontally.</p>
+					<p><em>Number</em> is used for simple mode.</p>
+					<p><em>Scope</em> and <em>Text</em> are for advanced mode.</p>
+					<p><em>Text</em> should be any singular general noun.</p>		
+				</div>
+			</div>
+		</div>
+	</div>
+<footer class="rq-font"><p>&copy2019 www.polymathicdesign.com</p></footer>
+
+<!-- End of HTLM markup, start of Javascript runtime--> 
+<script src="js/quoteEngine1.js"></script>
+<script src="js/quoteEngine2.js"></script>
+<script src="js/control.js"></script>
+<!-- End of Javascript -->
+</body>
+
+</html>
