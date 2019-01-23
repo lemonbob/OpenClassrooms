@@ -7,6 +7,7 @@ Step 1: Generate the map
 Start by randomly generating the game map. Each box can be either:
 
 •	Empty
+
 •	Unavailable (dimmed)
 
 On the map, a limited number of weapons (up to 4) will be placed randomly and can be collected by players who pass through.
