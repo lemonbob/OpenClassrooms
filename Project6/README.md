@@ -28,9 +28,13 @@ Step 3: Fight!
 If players cross over adjacent squares (horizontally or vertically), a battle begins.
 During combat, the game works is as follows:
 •	Each player attacks in turn
+
 •	The damage depends on the player's weapon
+
 •	The player can choose to attack or defend against the next shot
+
 •	If the player chooses to defend themselves, they sustain 50% less damage than normal
+
 •	As soon as the life points of a player (initially 100) falls to 0, they lose. A message appears and the game is over.
 
 Files to provide:
@@ -40,11 +44,14 @@ Presentation
 You'll do an oral presentation of your project with a validator in order to simulate real-life conditions. 
 The presentation will be structured as follows:  
 •	Presentation of your code and the game that you built: 15-20 minutes
+
 •	Q&A: 10 minutes
 
 Towards the end of the presentation, the mentor will debrief you for approximately 5 minutes.
 
 Skills
 •  Design reusable JavaScript application architecture
+
 •  Develop an object-oriented JavaScript application
+
 •  Implement the jQuery library in a web application
