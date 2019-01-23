@@ -15,6 +15,7 @@ You should invent at least 4 types of weapons in the game, each with different d
 The placement of the two players is also randomly on the map when the game loads. They should not touch (they can not be together).
 
 Files to provide:
+
 •	HTML / CSS / JS files
 
 Step 2: Movements
@@ -22,11 +23,13 @@ For each turn, a player can move from one to three boxes (horizontally or vertic
 If a player passes over a box containing a weapon, they leave their current weapon on site and replace it with the new one.
 
 Files to provide:
+
 •	HTML / CSS / JS files
 
 Step 3: Fight!
 If players cross over adjacent squares (horizontally or vertically), a battle begins.
 During combat, the game works is as follows:
+
 •	Each player attacks in turn
 
 •	The damage depends on the player's weapon
@@ -38,6 +41,7 @@ During combat, the game works is as follows:
 •	As soon as the life points of a player (initially 100) falls to 0, they lose. A message appears and the game is over.
 
 Files to provide:
+
 •	HTML / CSS / JS files
  
 Presentation
@@ -50,6 +54,7 @@ The presentation will be structured as follows:
 Towards the end of the presentation, the mentor will debrief you for approximately 5 minutes.
 
 Skills
+
 •  Design reusable JavaScript application architecture
 
 •  Develop an object-oriented JavaScript application
