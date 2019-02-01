@@ -1,8 +1,8 @@
 /*Game css*/
 
 
- /* css reset, either above tags or just the star */
- *{
+/* css reset, either above tags or just the star */
+*{
     margin: 0;
     padding: 0;
     border: 0;
@@ -13,8 +13,14 @@
     background-size:cover;
     background-repeat:no-repeat;
     background-position:center;
+    box-sizing: border-box;
+    user-select: none;
 }
 
+@font-face {
+  font-family: cyborgFont;
+  src: url("../fonts/terminator real nfi.otf");
+}
 
 body{
     background-image: url("../img/metal_texture2.jpg"); 
@@ -32,34 +38,571 @@ body{
     background: linear-gradient(217deg, rgba(0,120,95,.8), rgba(0,120,95,0) 70.71%),
     linear-gradient(127deg, rgba(10,0,0,.8), rgba(10,0,0,0) 70.71%),
     linear-gradient(336deg, rgba(0,0,20,.9), rgba(0,0,20,0) 70.71%) no-repeat center center fixed;
+    background-size: cover;        
+}
+
+#blackOverlay{
+    position:fixed;
+    display:block;
+    top:0px;
+    left:0px;
+    width:100%;
+    height:100%;
+    background: #000;
+    opacity:1;
     background-size: cover;
 }
 
-#board_area {
-position:relative;
-display:block;
-background:#000;
-height:100vh;
-width:100vh;
-margin:0 auto 0 auto;
-/*border:7px #665 solid;*/
-box-shadow: 10px 10px 30px rgba(0,0,0,0.7);
-/*overflow:hidden;*/
+#cyborgGame{
+    position:absolute;
+    display:block;
+    width:100%;
+    height:100%;
+    left:0;
+    top:0;
+    opacity:1;
+    overflow-x: none;
+    /*transition:all 1s ease-in-out;*/
+}
+
+
+#gameWrapper {
+    height:95vh;
+    width:123.5vh;
+    margin:auto;
+    margin-top:2vh;
+}
+
+
+#board_area{
+    position:relative;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    float:left;
+    background:#000;
+    height:100%;
+    width:76.923%;
+    overflow:hidden;
+    z-index:10;
 }
 
 #gameCanvas{
-position:absolute;
-display:block;
-top:0;
-left:0;
-width:100%;
-height:100%;
+    position:absolute;
+    display:block;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
 }
 
-@media screen and (orientation: portrait){
-#board_area {
-position:relative;
-height:100vw;
-width:100vw;
-margin:calc((100vh - 100vw) / 2) auto 0px auto;
+/*side player panels css*/
+.player-panel{
+    position:relative;
+    display:inline-block;
+    float:left;
+    height:100%;
+    width:11.5%;
+    opacity:0.9;
+    pointer-events: none;
+    z-index:1;
 }
+
+.panel-animation{
+    animation: translateRight 1s ease-in-out 1.5s both ; 
+    background:url("../img/panelleft.svg") no-repeat;
+}
+
+.panel-animation:nth-child(3){
+    animation: translateLeft 1s ease-in-out 1.5s both; 
+    background:url("../img/panelright.svg") no-repeat;
+}
+
+
+.p-pos{
+    top:7%;
+}
+
+.panel-section{
+   position:relative;
+   display:block;
+   float:left;
+   width:100%;
+   height:15%;
+   margin:0 0 15% 0;
+}
+
+.panel-section-sm{
+   position:relative;
+   display:block;
+   float:left;
+   width:100%;
+   height:5%;
+   margin:0 0 15% 0;
+}
+
+.panel-text{
+    position:relative;
+    display:block;
+    float:left;
+    width:100%;
+    font-family: cyborgFont;
+    font-size:1.4vh;
+    text-align: center;
+}
+
+.panel-turn{
+    position:relative;
+    display:block;
+    float:left;
+    margin:0 0 0 30%;
+    width:40%;
+    height:40%;
+    border-radius:50%;
+    background:radial-gradient(#f90, #730);
+    border:3px #333 solid;
+    box-shadow: 0 0 20px #af3;
+}
+
+.black-player{
+  background:radial-gradient(#999, #000);
+}
+
+.panel-weapon-img{
+    position:relative;
+    display:block;
+    float:left;
+    border-radius:10%;
+    width:70%;
+    margin:5% 0 5% 15%;
+    background:rgba(20,20,20,0.1);
+    border:3px rgba(20,20,20,0.2) solid;
+}
+
+.panel-weapon-img>img{
+    width:100%;
+}
+
+.panel-life-bar{
+    position:relative;
+    display:block;
+    float:left;
+    margin:10% 0% 0% 30%;
+    width:40%;
+    height:200%;
+    background:#000;
+    border-radius: 10px;
+    border:3px #333 solid;
+    box-shadow: 0 0 20px #af3;
+    overflow:hidden;
+}
+
+.life-bar{
+   position:absolute;
+   display:block;
+   width:100%;
+   height:100%;
+   right:0;
+   opacity:0.5;
+   background:linear-gradient(0deg, #f00, #af3);
+}
+
+.life-percent-bar{
+   position:absolute;
+   display:block;
+   width:100%;
+   height:0;
+   left:0;
+   top:0;
+   background:#000;
+   opacity:1;
+   transition:all 1s ease-in-out;
+}
+
+@keyframes translateRight{
+    0%{transform: translateX(100%);}
+    100%{transform: translateX(0px);}
+}
+
+@keyframes translateLeft{
+    0%{transform: translateX(-100%);}
+    100%{transform: translateX(0px);}
+}
+
+@keyframes translateUp{
+    0%{transform: translateY(100%);}
+    100%{transform: translateX(0px);}
+}
+
+@keyframes translateDown{
+    0%{transform: translateY(-100%);}
+    100%{transform: translateX(0px);}
+}
+/*end of panel css*/
+
+
+/*battle area css*/
+#battleZone{
+    position:absolute;
+    align-self: center;
+    display:none;
+    width:100%;
+    height:100%;
+    padding:10%;
+    color:#0af;
+    background:rgba(0,0,0,0.9);
+    text-align:center;
+    border:4px #0af solid;
+    box-shadow: 0 0 5vw #0af, 0 0 5vw #0af inset;
+}
+
+#battleZone p{
+    font-size:9vh;
+    font-family:"cyborgFont";
+    color:#0af;
+    filter:drop-shadow(0 0 10px #0af);
+    margin-bottom:10%;
+}
+
+.battle-panel{
+    position:relative;
+    display:block;
+    float:left;
+    width:50%;
+    /*transition:filter 0.3s ease-in-out;*/
+}
+
+.battle-panel img{
+    width:100%;
+}
+
+.battle-buttons{
+    position:relative;
+    float:left;
+    width:40%;
+    margin:2.5% 5% 0 5%;
+    border-radius: 10px;
+    border:3px #333 solid;
+    font-size:2vh;
+    background:#555;
+    color:#0af;
+    opacity:0.3;
+    font-family:"cyborgFont";
+    box-shadow:0 0 10px #0ef;
+    transition: opacity 0.3s ease-in-out;    
+}
+
+.bb-active{
+    opacity:0.9;
+    cursor:pointer;
+    pointer-events: all;
+}
+
+.bb-active:hover{
+    background:#29b;
+    color:#000;
+    opacity:1;
+}
+/*Game Message*/
+
+#gameMessage{
+    position:absolute;
+    align-self: center;
+    display:none;
+    color:#0af;
+    text-align: center;
+    font-size: 12vh;
+    font-family:"cyborgFont";
+    filter:drop-shadow(0 0 10px #0af);
+}
+
+#playAgain{
+    border:3px #333 solid;
+    background:#333;
+    font-size: 5vh;
+    color:#0af;
+    border-radius: 20px;
+    margin:1% 0;
+    border:5px #555 solid;
+    padding:10px 30px;
+    opacity:0.5;
+    /*font-family:"cyborgFont";*/
+    font-family: 'Days One', sans-serif;
+    pointer-events: all;
+    transition: opacity 0.3s ease-in-out;
+}
+
+#playAgain:hover{
+    opacity:0.8;
+    cursor:pointer;
+}
+
+/*//////////////////*/
+/*FRONT END & title sequence css*/
+#cyborgTitle{
+    position:relative;
+    display:block;
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+    opacity:1;
+    transform-origin: 50% 50%;
+    filter:drop-shadow(0px 0px 10px #0ef);
+    animation:titleHeight 10s linear forwards;
+    overflow:hidden;
+}
+
+#cyborgtext{
+    animation:titleSequenceRight 10s linear both;
+    transform-origin: 50% 50%;
+}
+
+#arenatext{
+    animation:titleSequenceLeft 10s linear both;
+    transform-origin: 50% 50%;
+}
+
+
+@keyframes titleSequenceRight{
+    0%{transform:scale(4,4) translate(63%, 0);}
+    80%{transform:scale(4,4) translate(0%, 0);}
+    100%{transform:scale(0.8,0.8) translate(0%, 0);}
+}
+
+@keyframes titleSequenceLeft{
+    0%{transform:scale(4,4) translate(-63%, 0)}
+    80%{transform:scale(4,4) translate(0%, 0);}
+    100%{transform:scale(0.8,0.8) translate(0%, 0);}
+}
+
+@keyframes titleHeight{
+    0%{height:100%;}
+    80%{height:100%;}
+    100%{height:30%;}
+}
+
+@keyframes titleFill{
+    0%{opacity: 0;}
+    100%{opacity: 1;}
+}
+
+#controlsArea{
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    margin-bottom:20px;
+}
+/*
+footer{
+    position:absolute;
+    bottom:0;
+    width:20%;
+    opacity:0;
+    margin:20px 40%;
+    transition:opacity 1s ease-in-out;
+}
+*/
+.play-button{
+    display:none;
+    align-self:center;
+    padding:10px 30px;
+    background:#333;
+    border-radius: 20px;
+    margin:1% 0;
+    opacity:0.5;
+    border:5px #555 solid;
+    font-family: 'Days One', sans-serif;
+    font-size:3vh;
+    text-align: center;
+    filter:drop-shadow(0px 0px 10px #0ef);
+    color:#0af;
+    transition:opacity 0.3s ease-in-out;
+}
+
+.play-button:hover{
+    cursor:pointer;
+    opacity:0.7;
+}
+
+#instructions{
+    display:none;
+    align-self:center;
+    width:80%;
+    padding:10px 30px;
+    background:#333;
+    border-radius: 20px;
+    margin:1% 0;
+    opacity:0.5;
+    border:5px #555 solid;
+    font-family: 'Days One', sans-serif;
+    font-size:100%;
+    text-align: center;
+    filter:drop-shadow(0px 0px 10px #0ef);
+    color:#0af;
+    transition:opacity 0.3s ease-in-out;
+}
+
+#instructions p{
+    margin-bottom:1em;
+}
+
+
+/*svg title styles*/
+.fil4 {fill:#0E68E6}
+.fil22 {fill:#416E98}
+.fil21 {fill:url(#id0);opacity:0;animation: titleFill 2s ease-in-out 9s forwards;}
+.fil17 {fill:url(#id0)}
+.fil8 {fill:url(#id1)}
+.fil18 {fill:url(#id2)}
+.fil19 {fill:url(#id3)}
+.fil20 {fill:url(#id4)}
+.fil39 {fill:url(#id5)}
+.fil9 {fill:url(#id6)}
+.fil1 {fill:url(#id7)}
+.fil0 {fill:url(#id8)}
+.fil41 {fill:url(#id9)}
+.fil13 {fill:url(#id10)}
+.fil27 {fill:url(#id11)}
+.fil36 {fill:url(#id12)}
+.fil38 {fill:url(#id13)}
+.fil23 {fill:url(#id14)}
+.fil24 {fill:url(#id15)}
+.fil32 {fill:url(#id16)}
+.fil26 {fill:url(#id17)}
+.fil37 {fill:url(#id18)}
+.fil11 {fill:url(#id19)}
+.fil2 {fill:url(#id20)}
+.fil10 {fill:url(#id21)}
+.fil29 {fill:url(#id22)}
+.fil31 {fill:url(#id23)}
+.fil15 {fill:url(#id24)}
+.fil12 {fill:url(#id25)}
+.fil14 {fill:url(#id26)}
+.fil5 {fill:url(#id27)}
+.fil25 {fill:url(#id28)}
+.fil34 {fill:url(#id29)}
+.fil33 {fill:url(#id30)}
+.fil28 {fill:url(#id31)}
+.fil35 {fill:url(#id32)}
+.fil30 {fill:url(#id33)}
+.fil40 {fill:url(#id34)}
+.fil7 {fill:url(#id35)}
+.fil6 {fill:url(#id36)}
+.fil3 {fill:url(#id37)}
+.fil16 {fill:url(#id38)}
+
+
+/*media queries*/
+
+@media screen and (max-aspect-ratio: 13/10){
+    #gameWrapper {
+        width:95vw;
+        height:123.5vw;
+        margin:auto;
+        margin-top:2vh;
+    }
+    #board_area {
+        width:100%;
+        height:76.923%;
+    }
+    .player-panel{
+        width:100%;
+        height:11.5%;
+        margin-top:0;
+    }
+    .panel-animation{
+        animation: translateUp 1s ease-in-out 1.5s both; 
+        background:url("../img/paneltop.svg") no-repeat;
+    }
+    .panel-animation:nth-child(3){
+        animation: translateDown 1s ease-in-out 1.5s both; 
+        background:url("../img/panelbottom.svg") no-repeat;
+    }
+
+    .panel-section{
+        width:14%;
+        height:90%;
+        margin:0 0 0 1%;
+    }
+
+    .panel-section-sm{
+        width:12%;
+        height:auto;
+        margin:4% 0 0 0;
+    }   
+
+    .p-pos{
+        top:7%;
+        left:2%;
+    }
+
+    .panel-life-bar{
+        margin:30% 0% 0% 10%;
+        width:200%;
+        height:40%;
+    }
+    
+    .panel-text{
+        font-size:1.4vw;
+    }
+
+    .panel-turn{
+        margin:25% 0 0 15%;
+    }
+
+    .panel-life-bar{
+        margin:20% 0 0 0;
+        width:200%;
+        height:40%;
+    }
+
+    .life-bar{
+        width:100%;
+        height:100%;
+        right:0;
+        bottom:0;
+        background:linear-gradient(90deg, #af3, #f00);
+    }
+
+    .life-bar-percent{
+        width:0%;
+        height:100%;
+    }
+
+    .play-button{
+        font-size: 3.5vw;
+    }
+
+    #battleZone {
+        font-size:8vw;
+    }
+
+    #battleZone p{
+        font-size:9vw;
+    }
+
+    .battle-buttons{
+        font-size:2.5vw; 
+    }   
+
+    #gameMessage{
+    font-size: 12vw;
+   }
+
+   #playAgain{
+     font-size: 5vw;
+}
+
+@media screen and (max-aspect-ratio: 10/13){
+    #gameWrapper {
+        width:95vw;
+        height:123.5vw;
+        margin:auto;
+        margin-top:calc((100vh - 123.5vw)/2);
+    }
+}
+
+
