@@ -8,10 +8,19 @@ global.$weaponRemove = weaponRemove;
 global.$hideWeaponUnderPieces = hideWeaponUnderPieces;
 global.$showWeaponUnderPiece = showWeaponUnderPiece;
 global.$checkPieceEnergyBar = checkPieceEnergyBar;
+global.$testForNoMove = testForNoMove;
 
 //PRIVATE
 
 //IMPLEMENTATION
+
+function testForNoMove(pieces, squares, turnFlag){
+	var index;
+
+	if (turnFlag === "white"){index = 0;}
+	else{index = 1;}
+	if (pieces[index].moves.length === 0){$gameOver(3, "PLAYER HAS NO MOVES");}
+}	
 
 function resetBoard(pieces, squares, energySquares){
 	var y,x,i;
@@ -227,7 +236,6 @@ function checkPieceEnergyBar(pieces, energySquares){
 	x = pieces[1].x;
 	y = pieces[1].y;
 	if (energySquares[x][y] !== 0){returnCode += 2;}
-	console.log(returnCode);
 	return returnCode;
 }
 

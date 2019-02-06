@@ -1,16 +1,17 @@
 //board loader functions and AJAX for game
 (function(global){
 
-global.$resetLoadCount  = resetLoadCount;
-global.$loadBoardData = loadBoardData;
-global.$setupPieces = setupPieces;
-global.$setupWeapons = setupWeapons;
-global.$resetWeaponExchangeStatus = resetWeaponExchangeStatus;
-global.$setupPieceImages = setupPieceImages;
-global.$setupEnergyBars = setupEnergyBars;
-global.$resetEnergyBars = resetEnergyBars;
-global.$setupEnergySquares = setupEnergySquares;
-global.$resetEnergySquares = resetEnergySquares;
+  global.$resetLoadCount  = resetLoadCount;
+  global.$loadBoardData = loadBoardData;
+  global.$setupPieces = setupPieces;
+  global.$setupWeapons = setupWeapons;
+  global.$resetWeaponExchangeStatus = resetWeaponExchangeStatus;
+  global.$setupPieceImages = setupPieceImages;
+  global.$setupEnergyBars = setupEnergyBars;
+  global.$resetEnergyBars = resetEnergyBars;
+  global.$setupEnergySquares = setupEnergySquares;
+  global.$resetEnergySquares = resetEnergySquares;
+  global.$randomBoardData = randomBoardData;
 
 //PUBLIC
 class energyBarObject{
@@ -36,8 +37,8 @@ class energyBarObject{
 //PRIVATE
 var loadCount;
 var totalLoadCount;
-weaponBaseDamage = [10,10,1,10,1,15,20];
-weaponBonusDamage= [0,0,29,10,39,15,20];
+const weaponBaseDamage = [10,10,1,5,1,5,20];
+const weaponBonusDamage= [0,0,19,10,29,20,20];
 
 /////////////////////////////////////////////////////////
 //IMPLEMENTATION 
@@ -48,9 +49,40 @@ function resetLoadCount(){
   totalLoadCount = 0;
 }
 
-function loadBoardData(url, squares){
-  var tempJSON, boardSize;
+//setup random board data
+function randomBoardData(boardSize, numbeams, squares){
+  var x,y,i,coordinate;
+  
+  for (i=0; i<boardSize; i++){
+    squares[i] = new Array(boardSize);
+  }
+  for (y=0;y<boardSize; y++){
+    for (x=0;x<boardSize; x++){
+      squares[x][y] = {};
+      squares[x][y].tile = 1;
+      squares[x][y].piece = 32;
+      squares[x][y].weapon = 32;
+      squares[x][y].screenX = 0;
+      squares[x][y].screenY = 0;
+    }
+  } 
+  for (i=0; i<numbeams;i++){
+    do{
+      x = Math.floor(Math.random()*(squares.length-2))+1;
+      y = Math.floor(Math.random()*(squares.length-2))+1;
+    }while(squares[x][y].piece !== 32 || squares[x][y].weapon !== 32);
+    squares[x][y].tile = 3;
+    squares[x][y].piece = 50;
+  }
+  $setBoardData(boardSize, squares);
+  isLoaded();
+}
 
+//load predefined board data in a JSON file
+function loadBoardData(boardnum, squares){
+  var tempJSON, boardSize, url;
+
+  url = "board" + boardnum + ".json"
   $.getJSON(url, function(tempJSON){
     boardSize = getMaxSize(tempJSON);
     squares = setupBoard(tempJSON, boardSize, squares);
@@ -88,6 +120,8 @@ function setupBoard(boardJSON, boardSize, squares){
       squares[x][y].tile = 0;
       squares[x][y].piece = 32;
       squares[x][y].weapon = 32;
+      squares[x][y].screenX = 0;
+      squares[x][y].screenY = 0;
     }
   } 
   for (i=0;i<boardJSON.length;i++){
@@ -95,6 +129,7 @@ function setupBoard(boardJSON, boardSize, squares){
     y = boardJSON[i].y;
     squares[x][y].tile = boardJSON[i].tile;
     if (squares[x][y].tile === 3){squares[x][y].piece = 50;} 
+    if (squares[x][y].tile === 0){squares[x][y].piece = 50;} 
   } 
   return squares;
 }
@@ -179,7 +214,7 @@ function setupPieceImages(piece_img, urlArray){
   for (index=0; index<urlArray.length; index++){
     piece_img[index] = new Image();
     piece_img[index].src = urlArray[index];
-    piece_img[index].onload = isLoaded();
+    piece_img[index].addEventListener("load", isLoaded);
   }
   return piece_img;
 }
@@ -188,14 +223,15 @@ function setupPieceImages(piece_img, urlArray){
 //check for load of all images
 function isLoaded(){
   var i;
-  //wait_for_load = false;
+  
   loadCount++;
   if (loadCount === (totalLoadCount+1)){
-    console.log("Loaded all files, start game!");
-    setTimeout(function(){$startGame();},100);
-  }else{
-    //console.log("waiting for load " + loadCount);
+    //console.log("Loaded all files, start game!");
+    $startGame();
   }
+  /*else{
+    console.log("waiting for load " + loadCount);
+  }*/
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -256,13 +292,13 @@ function calculateBarLength(squares,x,y,pass){
   var barLength = [0,0,0,0];
   if (pass === 0){
     i=1;
-    while (x-i>=0 && (squares[x-i][y].tile === 1)){
+    while (x-i>=0 && (squares[x-i][y].tile < 2)){
       barLength[0] ++;
       squares[x-i][y].tile = 2;
       i ++;
     }
     i=1;
-    while (x+i<squares.length && (squares[x+i][y].tile === 1)){
+    while (x+i<squares.length && (squares[x+i][y].tile < 2)){
       barLength[1] ++;
       squares[x+i][y].tile = 2;
       i ++;
@@ -270,14 +306,14 @@ function calculateBarLength(squares,x,y,pass){
   }
   if (pass === 1){
     i=1;
-    while (y-i>=0 && (squares[x][y-i].tile === 1 || squares[x][y-i].tile === 2)){
+    while (y-i>=0 && (squares[x][y-i].tile <= 2)){
       barLength[2] ++;
       squares[x][y-i].tile = 4;
       i ++;
     }
 
     i=1;
-    while (y+i<squares.length && (squares[x][y+i].tile === 1 || squares[x][y+i].tile === 2)){
+    while (y+i<squares.length && (squares[x][y+i].tile <= 2)){
       barLength[3] ++;
       squares[x][y+i].tile = 4;
       i ++;

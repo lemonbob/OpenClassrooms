@@ -1,3 +1,5 @@
+//Cyborg battle functions cyborgbattle.js//
+
 (function(global){
 
 
@@ -27,9 +29,32 @@ function cyborgBattle(pieces, weapons, turnFlag){
 
 function playerAttack(pieces, weapons){
 	var damageDone,pIndex;
-
-	if (playerTurn === "white"){pIndex = 0}else{pIndex = 1}
-		damageDone = calcWeaponDamage(weapons[pieces[pIndex].weapon]);
+	
+	if (playerTurn === "white"){pIndex = 0;}
+	else{pIndex = 1;}
+	switch(pieces[pIndex].weapon){
+		case 0:
+		pistolSfx.play();
+		break;
+		case 1:
+		pistolSfx.play();
+		break;
+		case 2:
+		uziSfx.play();
+		break;
+		case 3:
+		rifleSfx.play();
+		break;
+		case 4:
+		grenadeSfx.play();
+		break;
+		case 5:
+		laserSfx.play();
+		break;
+		default:
+		laserSfx.play();
+	}
+	damageDone = calcWeaponDamage(weapons[pieces[pIndex].weapon]);
 	if (pieces[1-pIndex].isDefending === true){damageDone = Math.round(damageDone/2);}
 	pieces[1-pIndex].life -= damageDone;
 	if (pieces[1-pIndex].life < 1){pieces[1-pIndex].life = 0;gameOver(pIndex+1, "GAME OVER");}
@@ -47,6 +72,7 @@ function playerAttack(pieces, weapons){
 function playerDefend(pieces){
 	var pIndex;
 
+	shieldSfx.play();
 	if (playerTurn === "white"){pIndex = 0}else{pIndex = 1}
 		pieces[pIndex].isDefending = true;
 	$(".battle-panel:eq(" + pIndex + ")").css({"filter":"drop-shadow(0 0 10px #00f)"}); 
@@ -87,6 +113,7 @@ function gameOver(playerIndex, message){
 };
 
 function playerWon(playerIndex){
+	hastalavistaSfx.play();
 	if (playerIndex < 3){
 		$("#gameMessage").hide(500, function(){
 			$("#gameMessage").html("<p>Player " + playerIndex + " wins</p><button id='playAgain'>Play Again</button>");
@@ -104,11 +131,11 @@ function playerWon(playerIndex){
 
 function restartGame(){
 	themeSfx.currentTime = 0;
+	$removeEventHandlers();
 	$("#gameMessage").hide(500);
 	$("#gameWrapper").animate({opacity:0},500);
 	$("#blackOverlay").fadeIn(1000, function(){
 		$loadTitles();
-		$displayTitleOptions();
 	});
 }
 

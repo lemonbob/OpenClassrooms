@@ -15,6 +15,8 @@ global.$drawCanvas = drawCanvas;
 global.$setObjectScreenXY = setObjectScreenXY;
 global.$setCanvasObjects = setCanvasObjects;
 global.$drawZapAnimations = drawZapAnimations;
+global.$setBoardScreenXY = setBoardScreenXY;
+global.$setXYToScreenXY = setXYToScreenXY;
 
 
 //PRIVATE
@@ -26,9 +28,8 @@ var animationBuffer;
 var ctxCanvas;
 var ctxBoardBuffer;
 var ctxAnimationBuffer;
-var cvsScale = 0.9;
 var cvsOffsetX, cvsOffsetY = 0;
-
+const cvsScale = 0.9;
 
 //IMPLEMENTATION
 
@@ -74,6 +75,22 @@ function setObjectScreenXY(gameObject){
   }
 }
 
+//set the screen XY of squares on resize to minimize frame drawtime calculations
+function setBoardScreenXY(squares){
+  var x,y;
+
+  for (y=0;y < squares.length; y++){
+    for (x=0;x < squares.length; x++){
+      squares[x][y].screenX = x*sw+cvsOffsetX;
+      squares[x][y].screenY = y*sw+cvsOffsetY;
+    }
+  }
+}
+
+function setXYToScreenXY(coordinate){
+  coordinate = coordinate*sw+cvsOffsetX + sw/2;
+  return coordinate;
+}
 
 //gets the pointer position
 function getBoardPosition(coordinate, boardSize){
@@ -95,42 +112,35 @@ function drawHighlight(image, x, y, opacity){
 
 //Draws the board on offscreen canvas - only called if there was an update /////
 function drawBoard(squares, board_img, boardSize, selectionLocation, selectionFlag){
-  var bx,by,x,y,boardIndex;
-  var cw = canvas.width / 2;
-  var cb = sw /2;
-  var rGrad;
-
+  var bx,by,x,y;
+  
+  //draw the border, then the squares, then the beam squares with shadow effect
   ctxBoardBuffer.save();
-  //effectively clears the board as image is full size of board
   ctxBoardBuffer.drawImage(board_img[0],0,0,canvas.width, canvas.height);
   for (y=0;y < boardSize; y++){
     for (x=0;x < boardSize; x++){
-      if (squares[x][y].tile < 3){ctxBoardBuffer.drawImage(board_img[squares[x][y].tile], x*sw+cvsOffsetX , y*sw+cvsOffsetY, sw, sw);}
+      if (squares[x][y].tile < 3){ctxBoardBuffer.drawImage(board_img[squares[x][y].tile], squares[x][y].screenX , squares[x][y].screenY, sw, sw);}
+      if (squares[x][y].piece === 200){ctxBoardBuffer.drawImage(board_img[6], squares[x][y].screenX , squares[x][y].screenY, sw, sw);}
+      if (squares[x][y].piece === 250){ctxBoardBuffer.drawImage(board_img[7], squares[x][y].screenX , squares[x][y].screenY, sw, sw);}
     }
   }
   for (y=0;y < boardSize; y++){
     for (x=0;x < boardSize; x++){
-      if (squares[x][y].tile === 3 || squares[x][y].tile === 4){
+      if (squares[x][y].tile === 3){
         ctxBoardBuffer.save();
         ctxBoardBuffer.shadowOffsetX = 5;
         ctxBoardBuffer.shadowOffsetY = 5;
         ctxBoardBuffer.shadowColor = "#000";
         ctxBoardBuffer.shadowBlur = 20;
-        ctxBoardBuffer.drawImage(board_img[squares[x][y].tile], x*sw+cvsOffsetX , y*sw+cvsOffsetY, sw, sw);
+        ctxBoardBuffer.drawImage(board_img[squares[x][y].tile], squares[x][y].screenX , squares[x][y].screenY, sw, sw);
         ctxBoardBuffer.restore();}
       }
     }  
-
+    
     if (selectionFlag === true){
       bx = selectionLocation.x*sw+cvsOffsetX;
       by = selectionLocation.y*sw+cvsOffsetY;
       ctxBoardBuffer.drawImage(board_img[5], bx, by, sw, sw);//gold glow behind piece
-    }
-    for (y=0;y < boardSize; y++){
-      for (x=0;x < boardSize; x++){
-        if (squares[x][y].piece === 200){ctxBoardBuffer.drawImage(board_img[6], x*sw+cvsOffsetX , y*sw+cvsOffsetY, sw, sw);}
-        if (squares[x][y].piece === 250){ctxBoardBuffer.drawImage(board_img[7], x*sw+cvsOffsetX , y*sw+cvsOffsetY, sw, sw);}
-      }
     }
     ctxBoardBuffer.restore();
   }
@@ -138,17 +148,20 @@ function drawBoard(squares, board_img, boardSize, selectionLocation, selectionFl
 
 //Draws the pieces on offscreen board - only called if there was a change //
 function drawPieces(pieces, piece_img, movePieceNumber, zapFlag){
-  var i;
+  var i,s;
 
+  s = sw/2;
   ctxBoardBuffer.save();
   ctxBoardBuffer.shadowOffsetX = 2;
   ctxBoardBuffer.shadowOffsetY = 2;
   ctxBoardBuffer.shadowColor = "#000";
   ctxBoardBuffer.shadowBlur = 10;
   for (i=0; i<pieces.length; i++){
-    if (pieces[i].isTaken === false && i !== movePieceNumber && i !== (zapFlag-1) && zapFlag !== 3){ctxBoardBuffer.drawImage(piece_img[pieces[i].piece], pieces[i].x*sw+cvsOffsetX, pieces[i].y*sw+cvsOffsetY, sw, sw);}
-  }
-  ctxBoardBuffer.restore();
+    if (pieces[i].isTaken === false && i !== movePieceNumber && i !== (zapFlag-1) && zapFlag !== 3){
+     ctxBoardBuffer.drawImage(piece_img[pieces[i].piece], pieces[i].centreX-s, pieces[i].centreY-s, sw, sw);
+   }
+ }
+ ctxBoardBuffer.restore();
 }
 
 
@@ -158,8 +171,8 @@ function drawPieceAnimations(imageMove, piece, scale){
   s = (sw/2*scale.current);
   s2 = sw*scale.current;
   shadowScale = sw*(scale.current-1);
-  piece.centreX = piece.x*sw+cvsOffsetX+sw/2;
-  piece.centreY = piece.y*sw+cvsOffsetY+sw/2;
+  //piece.centreX = piece.x*sw+cvsOffsetX+sw/2;
+  //piece.centreY = piece.y*sw+cvsOffsetY+sw/2;
   //always draw the moving piece last so it is on top, fade shadow down as piece scales up
   ctxAnimationBuffer.save();
   ctxAnimationBuffer.shadowOffsetX = 2+ shadowScale; 
@@ -173,15 +186,17 @@ function drawPieceAnimations(imageMove, piece, scale){
 
 
 function drawZapAnimations(imageZap, piece, scale, zap){
-  var s,s2,shadowScale;
+  var s,s2,shadowScale,satpercent;
 
   s = (sw/2*scale.current);
   s2 = sw*scale.current;
   piece.centreX = piece.x*sw+cvsOffsetX+sw/2;
   piece.centreY = piece.y*sw+cvsOffsetY+sw/2;
+  satpercent = (10000*zap.current)+100;
   //always draw the moving piece last so it is on top, fade shadow down as piece scales up
   ctxAnimationBuffer.save();
-  ctxAnimationBuffer.globalAlpha = 1-zap.current; 
+  ctxAnimationBuffer.globalAlpha = 1-zap.current;
+  ctxAnimationBuffer.filter = "sepia(100%) saturate(" + satpercent + "%)"; 
   ctxAnimationBuffer.drawImage(imageZap, piece.centreX-s, piece.centreY-s, s2, s2);
   ctxAnimationBuffer.restore();
 }
@@ -218,9 +233,7 @@ function drawWeapons(weaponImages, weapons, rotation, timestamp){
       ctxAnimationBuffer.restore();
     }
   }
-  
 }
-
 
 //draws the board canvas to the animation buffer 
 function copyBoardToAnimationBuffer(){

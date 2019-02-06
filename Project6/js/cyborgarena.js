@@ -1,48 +1,4 @@
-class animationObject{
-  constructor(){    
-    this.original = 0;
-    this.targetV = 0;
-    this.difference = 0;
-    this.current = 0;
-    this.duration = 0;
-    this.startFrame = 0;
-    this.timestamp = 0;
-    this.percentDone = 0;
-  }
-  setAttribute(originalValue, targetValue, time){
-    this.original = originalValue;
-    this.targetV = targetValue;
-    this.difference = targetValue - originalValue;
-    this.duration = time;
-    this.current = originalValue;
-    this.startFrame = 0;
-    this.timestamp = 0;
-    this.percentDone = 0;
-  }
-  animateAttribute(timestamp, easing, loop, delay){
-    if (delay === undefined){delay = 0;}
-    if (this.startFrame === 0){this.startFrame = timestamp+delay;}
-    this.timestamp = timestamp;
-    if (this.timestamp >= this.startFrame){
-      this.percentDone = (this.timestamp - this.startFrame) / this.duration;
-      if (this.percentDone >= 1){this.percentDone = 1;}
-      if (easing === "ease-in-out"){this.current = this.original + (((3*this.percentDone*this.percentDone) - 2*this.percentDone*this.percentDone*this.percentDone) * this.difference);}
-      if (easing === "ease-in"){this.current = this.original + ((this.percentDone*this.percentDone) * this.difference);}
-      if (easing === "ease-out"){this.current = this.original + ((1-(1-this.percentDone)*(1-this.percentDone)) * this.difference);}
-      if (easing === "linear"){this.current = this.original + (this.percentDone * this.difference);}
-      if (this.percentDone === 1){
-        if (loop === true){
-          this.startFrame = 0;
-          this.percentDone = 0;
-          this.targetV = this.original;
-          this.original = this.current; 
-          this.difference = this.targetV - this.original;
-          this.timestamp = timestamp;
-        } 
-      }
-    }
-  }
-}
+//Main game event controlling routine, requestanimationframe is an pseudo-event//
 
 (function game(global){
 
@@ -52,53 +8,37 @@ global.$setBoardData = setBoardData;
 global.$startGame = startGame;
 global.$drawSideBarInfo = drawSideBarInfo;
 global.$loadGameFiles = loadGameFiles;
+global.$removeEventHandlers = removeEventHandlers;
 
 //CLASS
 
 
 //PRIVATE 
 
-//sound objects - must move these to another unit
-//var tilezoomSfx = document.createElement("audio");
-//tilezoomSfx.src = "sound/check.mp3";
-//var laserSfx = document.createElement("audio");
-//laserSfx.src = "sound/laser.mp3";
-//var damageSfx = document.createElement("audio");
-//damageSfx.src = "sound/damage.mp3";
-
 var boardArea;
 
 //game generic variables and objects
 var boardSize = 0;
 var mslocation = {};
-mslocation.x = boardSize;
-mslocation.y = boardSize;
+mslocation.x = 0;
+mslocation.y = 0;
 
 var selectionLocation = {};
 var selectionFlag = false;
 var selection = 32;
 var last_selected = 32;
-var startFrame = 0;
 
 //animation control flags
 var animationFlags = {};
-/*animationFlags.isAnimating = false;
+animationFlags.isAnimating = false;
 animationFlags.drawBoard = false;
-animationFlags.drawPieces = false;*/
+animationFlags.drawPieces = false;
 
 
 var movePieceNumber = 32;
-var takenPieceNumber = 32;
-var whiteInCheck = false;
-var blackInCheck = false;
-var computerAI = false;
 var gameEnd = false;
 
-var turndata = {};
 var turnFlag = "white";
-turndata.side = 0; // 0 for white to move, 1 for black's go
-turndata.whiteclock = 0;
-turndata.blackclock = 0;
 var battleFlag = false;
 var zapFlag = 0;
 
@@ -137,20 +77,25 @@ var weaponExchangeArray = [];
 //IMPLEMENTATION
 
 //SETUP - inititate set up call
-function loadGameFiles(){	
+function loadGameFiles(){
 	$resetLoadCount();
 	setInitialVariableState();
 	piece_img = $setupPieceImages(piece_img,["img/connor.png","img/terminator.png"]);
-	board_img = $setupPieceImages(board_img,["img/arena.jpg", "img/board_tile1.jpg", "img/board_tile2.jpg", "img/board_tile3.jpg", "img/selection_frame.png", "img/selection1.jpg", "img/selection2.jpg", "img/selection6.jpg"]);
+	board_img = $setupPieceImages(board_img,["img/arenaborder.svg", "img/board_tile1.jpg", "img/board_tile2.jpg", "img/board_tile3.jpg", "img/selection_frame.png", "img/selection1.jpg", "img/selection2.jpg", "img/selection6.jpg"]);
 	laser_img = $setupPieceImages(laser_img,["img/laser1.png","img/laser2.png", "img/laser3.png"]);
 	weapon_img = $setupPieceImages(weapon_img,["img/weapon1.png", "img/weapon1.png", "img/weapon2.png", "img/weapon3.png", "img/weapon4.png", "img/weapon5.png"]);
-	$loadBoardData("board.json", squares);
+	if (formSettingsData.boardType === "pre-defined"){$loadBoardData(formSettingsData.boardNumber, squares);}
+	else{$randomBoardData(formSettingsData.boardSize, formSettingsData.beamGenerators, squares);}
+
 }
 
 //start game function calls
 function setBoardData(bsize, data){
 	boardSize = bsize;
 	squares = data;
+	mslocation.x = boardSize;
+	mslocation.y = boardSize;
+	boardArea = document.getElementById("board_area");
 	pieces = $setupPieces(pieces, piece_img.length, squares);
 	weapons = $setupWeapons(weapons, weapon_img.length, squares);
 	energy_bars = $setupEnergyBars(energy_bars, squares);
@@ -159,10 +104,12 @@ function setBoardData(bsize, data){
 }  
 
 function startGame(){
+	$hideLoadingDiv();
 	$setCanvasObjects();
 	$setCanvasSize(boardSize, weapons);
 	$setObjectScreenXY(weapons);
 	$setObjectScreenXY(pieces);
+	$setBoardScreenXY(squares);
 	$resetBoard(pieces, squares, energySquares);
 	addEventHandlers();
 	cvs2Opacity.setAttribute(0, 0, 0);
@@ -182,15 +129,12 @@ function startGame(){
 }
 
 function setInitialVariableState(){
-	boardArea = document.getElementById("board_area");
+	mslocation = {};
+	animationFlags = {};
 	animationFlags.isAnimating = false;
 	animationFlags.drawBoard = false;
 	animationFlags.drawPieces = false; 
 	movePieceNumber = 32;
-	takenPieceNumber = 32;
-	whiteInCheck = false;
-	blackInCheck = false;
-	computerAI = false;
 	gameEnd = false; 
 	battleFlag = false;
 	zapFlag = 0;
@@ -198,10 +142,24 @@ function setInitialVariableState(){
 	selectionFlag = false;
 	selection = 32;
 	last_selected = 32;
-	startFrame = 0;
 	boardSize = 0;
-	mslocation.x = boardSize;
-	mslocation.y = boardSize;
+	squares = [];
+	pieces = [];
+	piece_img = [];
+	board_img = [];
+	weapons = [];
+    laser_img = [];
+    weapon_img = [];
+    weaponMoveArray = [];
+    weaponExchangeArray = [];
+    cvsMoveScale = new animationObject();
+	cvs2Opacity = new animationObject();
+	cvs3Opacity = new animationObject();
+	cvsLaserOpacity = new animationObject();
+	cvs3PieceMoveX = new animationObject();
+	cvs3PieceMoveY = new animationObject();
+	cvsWeaponAnimation = new animationObject();
+	cvsZapAnimation = new animationObject();
 }
 
 ///end of set up
@@ -215,6 +173,7 @@ function windowResized(){
 	$setCanvasSize(boardSize);
 	$setObjectScreenXY(weapons);
 	$setObjectScreenXY(pieces);
+	$setBoardScreenXY(squares);
 	drawSideBarInfo(turnFlag);
 	cvsMoveScale.setAttribute(1, 2, 490);
 	animationFlags.drawBoard = true;
@@ -229,6 +188,12 @@ function addEventHandlers(){
 	boardArea.addEventListener("mouseout", noHighlight);
 }
 
+function removeEventHandlers(){
+	window.removeEventListener("resize", windowResized);
+	boardArea.removeEventListener("click", function(event){boardClick(event);});
+	boardArea.removeEventListener("mousemove", function(event){mouseMoveHighlight(event);});
+	boardArea.removeEventListener("mouseout", noHighlight);
+}
 
 ////////////////////////////////////////////////////////////////////
 //MAIN CONTROL EVENTS
@@ -313,17 +278,17 @@ function resetPiece(timestamp){
 	animationFlags.isAnimating = false;
 	cvsMoveScale.setAttribute(1, 2, 490);
 	movePieceNumber = 32;
-	takenPieceNumber = 32;
 	energy_bars = $resetEnergyBars(energy_bars);
 	energySquares = $resetEnergySquares(energySquares, energy_bars);
 	$resetWeaponExchangeStatus(weapons, squares);
 	$hideWeaponUnderPieces(pieces, weapons, "end");
 	$resetBoard(pieces, squares, energySquares);
+	if (battleFlag === false && zapFlag === 0){$testForNoMove(pieces, squares, turnFlag);}
 	$drawSideBarInfo(turnFlag);
+	if (gameEnd === false){zapFlag = $checkPieceEnergyBar(pieces, energySquares);}
+	if (zapFlag !== 0){noHighlight();zapSfx.play();}
+	if (battleFlag === true && zapFlag === 0){$cyborgBattle(pieces, weapons, turnFlag);}
 	animationFlags.drawBoard = true;
-	if (zapFlag !== -1){zapFlag = $checkPieceEnergyBar(pieces, energySquares);}
-	if (zapFlag !== 0){noHighlight();}
-	if (battleFlag === true){$cyborgBattle(pieces, weapons, turnFlag);}
 }
 
 
@@ -337,7 +302,7 @@ function animate(){
 	if (animationFlags.isAnimating === false){requestAnimationFrame(drawGame);}
 }
 
-//var tempPieceNumber = 0;
+//canvas requestanimation callback routine 
 function drawGame(timestamp){
 	animateHighlight(timestamp);
 	animatePiece(timestamp);
@@ -354,10 +319,10 @@ function drawGame(timestamp){
 	if (movePieceNumber !== 32){
 		$drawPieceAnimations(piece_img[pieces[movePieceNumber].piece], pieces[movePieceNumber], cvsMoveScale);
 	}
-	if (zapFlag === 1 || zapFlag === 2){
+	if ((zapFlag === 1 || zapFlag === 2) && gameEnd === false){
 		$drawZapAnimations(piece_img[pieces[zapFlag-1].piece], pieces[zapFlag-1], cvsMoveScale, cvsZapAnimation);
 	}
-	if (zapFlag === 3){
+	if (zapFlag === 3 && gameEnd === false){
 		$drawZapAnimations(piece_img[pieces[0].piece], pieces[0], cvsMoveScale, cvsZapAnimation);
 		$drawZapAnimations(piece_img[pieces[1].piece], pieces[1], cvsMoveScale, cvsZapAnimation);
 	}
@@ -366,6 +331,7 @@ function drawGame(timestamp){
 	if (animationFlags.isAnimating === true){requestAnimationFrame(drawGame);}
 }
 
+//redraws the board and floats the piece down to board canvas
 function redrawBoard(){
 	if (animationFlags.drawPieces === true || animationFlags.drawBoard === true){
 		$drawBoard(squares, board_img, boardSize, selectionLocation, selectionFlag);
@@ -375,6 +341,7 @@ function redrawBoard(){
 	}
 }
 
+//draws the sidebar using JQUERY and DOM manipulations
 function drawSideBarInfo(turnFlag){
 	if (weapons[pieces[0].weapon].bonusDamage > 0){$(".weapon-text:eq(0)").html("<p>Damage<br>" + weapons[pieces[0].weapon].damage + " to " + (weapons[pieces[0].weapon].bonusDamage+weapons[pieces[0].weapon].damage) + "</p>");}
 	else {$(".weapon-text:eq(0)").html("<p>Damage<br>" + weapons[pieces[0].weapon].damage + "</p>");}
@@ -419,30 +386,18 @@ function animatePiece(timestamp){
 			if (cvsMoveScale.percentDone === 1){cvsMoveScale.setAttribute(2, 1, 490);}
 		}
 		else {cvsMoveScale.animateAttribute(timestamp, "ease-in");}
-
 		cvs3PieceMoveY.animateAttribute(timestamp, "ease-in-out");
 		cvs3PieceMoveX.animateAttribute(timestamp, "ease-in-out");
-		pieces[movePieceNumber].y = cvs3PieceMoveY.current;
-		pieces[movePieceNumber].x = cvs3PieceMoveX.current;
+		pieces[movePieceNumber].centreX = cvs3PieceMoveX.current;
+		pieces[movePieceNumber].centreY = cvs3PieceMoveY.current;
 		if (cvs3PieceMoveX.percentDone === 1 && cvs3PieceMoveY.percentDone === 1){resetPiece(timestamp);}
-	}
-	if (takenPieceNumber !== 32){
-		animationFlags.isAnimating = true; 
-		cvs3Opacity.animateAttribute(timestamp, "ease-in-out");
-		if (cvs3Opacity.percentDone === 1){
-			animationFlags.isAnimating = false; 
-			takenPieceNumber = 32;
-			cvs3Opacity.setAttribute(1, 0, 1000);
-		}
 	}
 	if (zapFlag !== 0 && gameEnd === false){
 		cvsZapAnimation.animateAttribute(timestamp, "ease-in-out");
 		if (cvsZapAnimation.percentDone === 1){
 			gameEnd = true;
-			console.log("zapFlag " + zapFlag);
 			if (zapFlag === 3){playerIndex = 3}
 			else {playerIndex = (1-(zapFlag-1))+1;} 
-			console.log("player index " + playerIndex);
 			$gameOver(playerIndex, "YOU WERE FRIED");
 		}
 	}
@@ -529,13 +484,12 @@ function resetSelection(){
 //Sets the animation for moving a piece and resets the board //////////////////
 function movePiece(){
 	movePieceNumber = last_selected;
-	cvs3PieceMoveX.setAttribute(pieces[movePieceNumber].x, selectionLocation.x, 1000);
-	cvs3PieceMoveY.setAttribute(pieces[movePieceNumber].y, selectionLocation.y, 1000);
-	//if (selection === 250){battle}
-	//remove a taken piece
-	
+	pieces[movePieceNumber].x = selectionLocation.x;
+	pieces[movePieceNumber].y = selectionLocation.y;
 	//reset selection pieces - 32 is the number of piece to use for no piece
 	squares[pieces[movePieceNumber].x][pieces[movePieceNumber].y].piece = 32;
+	cvs3PieceMoveX.setAttribute(pieces[movePieceNumber].centreX, $setXYToScreenXY(selectionLocation.x), 1000);
+	cvs3PieceMoveY.setAttribute(pieces[movePieceNumber].centreY, $setXYToScreenXY(selectionLocation.y), 1000);
 	last_selected = 32;
 	selection = 32;
 	resetSelection();
