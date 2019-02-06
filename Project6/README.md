@@ -1,4 +1,4 @@
-# Project 6
+# Project 6 cyborgarena@polymathicdesign.com
 
 In this project, you will create an online game written JavaScript in which 2 players play each turn to compete. 
 
