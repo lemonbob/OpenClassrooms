@@ -1,4 +1,4 @@
-# Project 6 cyborgarena.polymathicdesign.com
+# Project 6 [Sites Using React](http://cyborgarena.polymathicdesign.com)
 
 In this project, you will create an online game written JavaScript in which 2 players play each turn to compete. 
 
