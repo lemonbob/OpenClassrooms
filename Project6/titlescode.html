@@ -214,24 +214,55 @@
 	<div class="play-button">PLAY</div>
 	<div class="play-button">INSTRUCTIONS</div>
 	<div class="play-button">SETTINGS</div>
-	<div id="instructions">
+	<div class="instructions">
 		<p>In 2149, after the cyborgs and humans had almost obliterated each other, an uneasy truce was struck. Under this truce, 
-			a contest was formed where humans and cyborgs would battle ... to the death. This contest was know as "Cyborg Arena".
+			a contest was formed where humans and cyborgs would battle ... to the death. This contest was known as "Cyborg Arena".
 		</p>
-		<p>In the Cyborg Arena, there are two phases to combat. First, players must negotiate the arena to collect the most power weapon they can. However, dark tiles show the path
-			of randomly generated energy beams from the beam generators. Avoid being caught under these beams, they will cause instant death.
+		<p>In Cyborg Arena, there are two phases to combat. First, players must negotiate the arena to collect the most powerful weapon they can.
+			 Select your piece to move, then select one of the blue squares which are your valid moves. Dark tiles show the path of randomly generated
+			  energy beams from the beam generators. Avoid being caught under these beams, they will cause instant death.
 		</p>
 		<p>Weapons are swapped by landing on, or passing over, weapon squares. Be careful, weapons can be swapped more than once 
-			when more than one weapon square is crossed in a move. Blue squares show all valid moves.
+			when more than one weapon square is crossed in a move.
 		</p>
-		<p>In the second phase, when a player lands on, or passes by, a square adjacent to another player, combat commences. 
+		<p>In the second phase, when a player lands on, or passes by, a square adjacent to another player, combat will automatically commence. 
 			A special blue square shows when a move will result in combat.
 		</p>
 		<p>
 			When combat starts, it is a battle to the death, there is no escape. During combat, players may attack or defend the next shot. 
-			Many weapons do variable amounts of damage. Defending a large hit could be better than chosing to attack!
+			Many weapons do variable amounts of damage. Defending, and taking only half the damage of a large hit, could be better than choosing to attack!
 		</p>
 		<p>May fortune favour the brave...</p>
+	</div>
+	<div class="instructions">
+		<h1>SETTINGS</h1>
+		<form id="gameMenuSettings">
+			<fieldset>
+				<legend>BOARD DATA:</legend>
+				<input type="radio" name="boardtype" value="pre-defined" checked>Load<br>
+				<input type="radio" name="boardtype" value="random">Random<br>
+			</fieldset>
+			<fieldset>
+				<legend>LOAD BOARD:</legend>
+				<input type="radio" name="boardnumber" value="1" checked> 1<br>
+				<input type="radio" name="boardnumber" value="2" >2<br>
+				<input type="radio" name="boardnumber" value="3" >3<br>
+				<input type="radio" name="boardnumber" value="4" >4<br>
+			</fieldset>
+			<fieldset class="fieldset-disabled">
+				<legend class="legend-disabled">RANDOM BOARD SIZE:</legend>
+				<input type="radio" name="boardsize" value="7" checked disabled> 7 x 7<br>
+				<input type="radio" name="boardsize" value="8" disabled>8 x 8<br>
+				<input type="radio" name="boardsize" value="9" disabled>9 x 9<br>
+			</fieldset>
+			<fieldset class="fieldset-disabled">
+				<legend class="legend-disabled">LASER BEAM BLOCKS:</legend>
+				<input type="radio" name="beamgenerators" value="2" checked disabled>2<br>
+				<input type="radio" name="beamgenerators" value="3" disabled>3<br>
+				<input type="radio" name="beamgenerators" value="4" disabled>4<br>
+			</fieldset>
+			
+		</form>
 	</div>
 	<div class="play-button">BACK</div>   
 </section>
