@@ -80,7 +80,7 @@ class AppTitleBar extends React.Component {
 		);
 	}
 }
-//export default HelloWorld;
+//export default AppTitleBar;
 ///Endof Module
 ////////////////////////////////////////////////////////////////////////////////
 
@@ -255,12 +255,12 @@ class StreetMapData extends React.Component {
 		else return(<div id="popupInfo"></div>);
 	}
 }
-//export default StreetImg
+//export default StreetMapData
 ///////////////////////////////////////////////////////////////////////////////
 
 ///Module
 //import React from "react";
-//import StreetMapImg from "./StreetMapImg";
+//import StreetMapData from "./StreetMapData";
 //import Atomic from "./atomic";
 class GoogleMap extends React.Component {
 	constructor(props){
@@ -385,6 +385,7 @@ class StarRating extends React.Component {
 
 	///Module
 	//import React from "react";
+	//import StarRating from "./StarRating";
 	//import Atomic from "./atomic";
 	class ReviewList extends React.Component {
 		constructor(props){
@@ -415,8 +416,9 @@ class StarRating extends React.Component {
 
 
 	///Module
-	//import React from "react";
+	//import React from "react";				
 	//import ReviewList from "./ReviewList";
+	//import StarRating from "./StarRating";			
 	//import Atomic from "./atomic";
 	class DataItem extends React.Component {
 		constructor(props){
