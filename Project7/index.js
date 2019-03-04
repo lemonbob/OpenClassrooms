@@ -1,9 +1,6 @@
 //Note, this build is for React/Babel Stand-alone files. 
 //To use with npm, separate each module into respect files and remove commented out import/export declarations.
 
-//PUBLIC
-var destination = document.querySelector("#root");
-
 //MODULES
 //////////////////////////////////////////////////////////////////////////////
 
@@ -570,6 +567,7 @@ class StarRating extends React.Component {
 
 
 	//MAIN index.js module   ///////////////////
+	
 	//import React from "react";
 	//import ReactDOM from "react-dom";
 	//import SVGClipDefs from "./SVGClipDefs";
@@ -578,6 +576,10 @@ class StarRating extends React.Component {
 	//import InfoPanel from "./InfoPanel";
 	//import ReviewFooter from "./ReviewFooter";
 	//import MouseDropIcon from "./MouseDropIcon";
+
+	//PUBLIC
+	var destination = document.querySelector("#root");
+
 	ReactDOM.render(
 		<div>
 		<SVGClipDefs/>
