@@ -1,4 +1,5 @@
-//Note, this build is for React/Babel Stand-alone files. 
+//index.js module//
+//Note, this build is for React/Babel Stand-alone files.
 //To use with npm, separate each module into respect files and remove commented out import/export declarations.
 
 //MODULES
@@ -6,7 +7,6 @@
 
 ///Module
 //import React from "react";
-//import Atomic from "./atomic";
 class PlaceInput extends React.Component {
 	constructor(props){
 		super(props);
@@ -81,7 +81,6 @@ class AppTitleBar extends React.Component {
 	}
 }
 //export default AppTitleBar;
-///Endof Module
 ////////////////////////////////////////////////////////////////////////////////
 
 //Module
@@ -255,7 +254,7 @@ class StreetMapData extends React.Component {
 		else return(<div id="popupInfo"></div>);
 	}
 }
-//export default StreetMapData
+//export default StreetMapData;
 ///////////////////////////////////////////////////////////////////////////////
 
 ///Module
@@ -355,15 +354,9 @@ class StarRating extends React.Component {
 		let starBox,clipStyle,filStyle1,filStyle2;
 		starBox = 240*this.props.stars;
 		starBox = starBox.toString();
-		clipStyle = {clipPath:"url(#id0)"}
-		filStyle1 = {
-			fill:"none",
-			stroke:"#000",
-			strokeWidth:10
-		}
-		filStyle2 = {
-			fill:"#f70",
-		}
+		clipStyle = {clipPath:"url(#id0)"};
+		filStyle1 = {fill:"none",stroke:"#000",strokeWidth:10};
+		filStyle2 = {fill:"#f70"};
 		if (this.props.stars !== "no reviews"){
 			return(
 				<svg className="review-stars" width="100%" height="100%" version="1.1" viewBox="0 0 1199 218">
@@ -372,231 +365,231 @@ class StarRating extends React.Component {
 				</g>
 				<path style={filStyle1} d="M115 28l21 64 67 0 -55 40 22 64 -55 -40 -55 40 21 -64 -55 -40 68 0 21 -64zm970 0l20 64 68 0 -55 40 21 64 -54 -40 -55 40 21 -64 -55 -40 68 0 21 -64zm-243 0l21 64 68 0 -55 40 21 64 -55 -40 -55 40 21 -64 -54 -40 67 0 21 -64zm-242 0l20 64 68 0 -55 40 21 64 -54 -40 -55 40 21 -64 -55 -40 68 0 21 -64zm-243 0l21 64 68 0 -55 40 21 64 -55 -40 -55 40 22 -64 -55 -40 67 0 21 -64z"/>
 				</svg>);
-			}else{
+			}	else{
 				return(<svg className="review-stars" width="100%" height="100%" version="1.1" viewBox="0 0 1199 218">
 				<g style={clipStyle}>
 				<rect style={filStyle2} x="0" y="0" width="0" height="218"/>
 				</g>
 				<path style={filStyle1} d="M115 28l21 64 67 0 -55 40 22 64 -55 -40 -55 40 21 -64 -55 -40 68 0 21 -64zm970 0l20 64 68 0 -55 40 21 64 -54 -40 -55 40 21 -64 -55 -40 68 0 21 -64zm-243 0l21 64 68 0 -55 40 21 64 -55 -40 -55 40 21 -64 -54 -40 67 0 21 -64zm-242 0l20 64 68 0 -55 40 21 64 -54 -40 -55 40 21 -64 -55 -40 68 0 21 -64zm-243 0l21 64 68 0 -55 40 21 64 -55 -40 -55 40 22 -64 -55 -40 67 0 21 -64z"/>
-				</svg>);
-			}
-		}
-	}
-
-	///Module
-	//import React from "react";
-	//import StarRating from "./StarRating";
-	//import Atomic from "./atomic";
-	class ReviewList extends React.Component {
-		constructor(props){
-			super(props);
-		}
-		render(){
-			let reviewData = [];
-			//let reviewStyle = {display:"block"};
-			//if (this.props.restReviewList === "none"){reviewStyle = {display:"none"};}
-			if (this.props.restReviewList !== "none"){
-				for(let i=0;i<this.props.restReviewList.length;i++){
-					reviewData.push(<li key={i+"reviewlist"}>{this.props.restReviewList[i].comment}<br></br><StarRating key={i+"StarRating"} stars={this.props.restReviewList[i].stars}></StarRating></li>);
-				}
-			}
-			let dataStyle = {maxHeight:this.props.reviewShow};
-			return (
-				<div className="data-reviews" style={dataStyle}>
-				<h2>Reviews:</h2>
-				<ul>
-				{reviewData}
-				</ul>
-				</div>
+				</svg>
 			);
 		}
 	}
-	//export default ReviewList
-	////////////////////////////////////////////////////////////////////////////////
+}
 
-
-	///Module
-	//import React from "react";				
-	//import ReviewList from "./ReviewList";
-	//import StarRating from "./StarRating";			
-	//import Atomic from "./atomic";
-	class DataItem extends React.Component {
-		constructor(props){
-			super(props);
-			this.state = {
-				height:"0px",
-			};
+///Module
+//import React from "react";
+//import StarRating from "./StarRating";
+//import Atomic from "./atomic";
+class ReviewList extends React.Component {
+	constructor(props){
+		super(props);
+	}
+	render(){
+		let reviewData = [];
+		//let reviewStyle = {display:"block"};
+		//if (this.props.restReviewList === "none"){reviewStyle = {display:"none"};}
+		if (this.props.restReviewList !== "none"){
+			for(let i=0;i<this.props.restReviewList.length;i++){
+				reviewData.push(<li key={i+"reviewlist"}>{this.props.restReviewList[i].comment}<br></br><StarRating key={i+"StarRating"} stars={this.props.restReviewList[i].stars}></StarRating></li>);
+			}
 		}
-		toggleList(){
-			if (this.state.height === "0px"){this.setState({height:"500px"});}
-			else {this.setState({height:"0px"});}
+		let dataStyle = {maxHeight:this.props.reviewShow};
+		return (
+			<div className="data-reviews" style={dataStyle}>
+			<h2>Reviews:</h2>
+			<ul>
+			{reviewData}
+			</ul>
+			</div>
+		);
+	}
+}
+//export default ReviewList
+////////////////////////////////////////////////////////////////////////////////
+
+
+///Module
+//import React from "react";
+//import ReviewList from "./ReviewList";
+//import StarRating from "./StarRating";
+//import Atomic from "./atomic";
+class DataItem extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			height:"0px",
 		};
-		bounceMapMarker(){
-			Atomic.marker[this.props.dataIndex+1].setAnimation(google.maps.Animation.BOUNCE);
-			setTimeout(() => this.stopBounce(), 3000);
-			Atomic.map.panTo(Atomic.marker[this.props.dataIndex+1].getPosition());
-			//Atomic.search();
+	}
+	toggleList(){
+		if (this.state.height === "0px"){this.setState({height:"500px"});}
+		else {this.setState({height:"0px"});}
+	};
+	bounceMapMarker(){
+		Atomic.marker[this.props.dataIndex+1].setAnimation(google.maps.Animation.BOUNCE);
+		setTimeout(() => this.stopBounce(), 3000);
+		Atomic.map.panTo(Atomic.marker[this.props.dataIndex+1].getPosition());
+		//Atomic.search();
+	};
+	stopBounce(){
+		Atomic.marker[this.props.dataIndex+1].setAnimation(null);
+	}
+	render(){
+		let dataItemStyle = {display:this.props.dataItemStyle};
+		let dataButtonStyle = {display:"block"};
+		if (this.props.restReviewList === "none"){dataButtonStyle = {display:"none"};}
+		return (
+			<div className="data-item glow-hover" style={dataItemStyle} onClick={() => this.bounceMapMarker()}>
+			<h1>{this.props.restName}</h1>
+			<p>{this.props.restAddr}</p>
+			<p><br></br><StarRating stars={this.props.restRating}></StarRating></p>
+			<button className="data-button" style={dataButtonStyle} onClick={() => this.toggleList()}>Show/Hide Reviews</button>
+			<ReviewList restReviewList={this.props.restReviewList} reviewShow={this.state.height}></ReviewList>
+			</div>
+		);
+	}
+}
+//export default DataItem
+////////////////////////////////////////////////////////////////////////////////
+
+
+///Module
+//import React from "react";
+//import DataItem from "./DataItem";
+//import Atomic from "./atomic";
+class InfoPanel extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false}
+		Atomic.setReactClassUpdate("InfoPanel");
+		Atomic.InfoPanel.update = Atomic.InfoPanel.update.bind(this);
+	}
+	showAddRestaurant(){
+		if (this.state.addRestFlag === false && this.state.blockAddRest === false){
+			Atomic.removeMarkerListeners();
+			$("#mouseDropIcon").show();
+			Atomic.GoogleMap.update({mouseDrop:true});
+			this.setState({addRestFlag:true, addRestaurantText:"Cancel Restaurant"})
+		}
+		if (this.state.addRestFlag === true && this.state.blockAddRest === false){
+			Atomic.addMarkerListeners();
+			Atomic.GoogleMap.update({mouseDrop:false});
+			$("#mouseDropIcon").hide();
+			this.setState({addRestFlag:false, addRestaurantText:"+ Restaurant"})
+		}
+	}
+	filterRatings(filterType){
+		if (this.state.addRestFlag === false && this.state.blockAddRest === false){
+			let filterValue;
+			filterValue = $("input[name=filterRange]").val();
+			filterValue = filterValue/10;
+			if (filterType === "high"){
+				Atomic.setInfoData(filterValue,5);
+				Atomic.InfoPanel.update();
+			}else {
+				Atomic.setInfoData(0,filterValue);
+				Atomic.InfoPanel.update();
+			}
+		}
+	}
+	render(){
+		let normalStyle, buttonStyle;
+		if (this.state.blockAddRest === true || this.state.addRestFlag === true){
+			normalStyle = {opacity:0.5, pointerEvents:"none"};
+			buttonStyle = {marginLeft:15, marginRight:15, opacity:0.5, pointerEvents:"none"};
+		}else{
+			normalStyle = {opacity:1, pointerEvents:"all"};
+			buttonStyle = {marginLeft:15, marginRight:15, opacity:1, pointerEvents:"all"};
+		}
+		return (
+			<div id="infoPanel">
+			<div className="popup-header">
+			<div className="popup-add" onClick={() => this.showAddRestaurant()}>{this.state.addRestaurantText}</div>
+			</div>
+			<div id="filterPanel">
+			<button  className="data-button" style={buttonStyle} onClick={() => this.filterRatings("low")}>Filter Lower</button>
+			<input className="filter-range" style={normalStyle} type="range" name="filterRange" min="1" max="50"/>
+			<button  className="data-button" style={buttonStyle} onClick={() => this.filterRatings("high")}>Filter Higher</button>
+			</div>
+			<div style={normalStyle}>{Atomic.infoData}</div>
+			</div>
+		);
+	}
+}
+//export default InfoPanel;
+////////////////////////////////////////////////////////////////////////////////
+
+///Module
+//import React from "react";
+//import Atomic from "./atomic";
+class MouseDropIcon extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {x:"0px", y:"0px", drop:false}
+	}
+	moveIcon(e){
+		let left = ((e.pageX-22) + "px");
+		let top = ((e.pageY-45) + "px");
+		this.setState({x:left, y:top});
+	}
+	componentDidMount(){
+		$(document).on("mousemove",(e) => this.moveIcon(e));
+	};
+	render(){
+		let pos = {
+			left:this.state.x,
+			top:this.state.y,
 		};
-		stopBounce(){
-			Atomic.marker[this.props.dataIndex+1].setAnimation(null);
-		}
-		render(){
-			let dataItemStyle = {display:this.props.dataItemStyle};
-			let dataButtonStyle = {display:"block"};
-			if (this.props.restReviewList === "none"){dataButtonStyle = {display:"none"};}
-			return (
-				<div className="data-item glow-hover" style={dataItemStyle} onClick={() => this.bounceMapMarker()}>
-				<h1>{this.props.restName}</h1>
-				<p>{this.props.restAddr}</p>
-				<p><br></br><StarRating stars={this.props.restRating}></StarRating></p>
-				<button className="data-button" style={dataButtonStyle} onClick={() => this.toggleList()}>Show/Hide Reviews</button>
-				<ReviewList restReviewList={this.props.restReviewList} reviewShow={this.state.height}></ReviewList>
-				</div>
-			);
-		}
+		return (
+			<div id="mouseDropIcon" style={pos}></div>
+		);
 	}
-	//export default DataItem
-	////////////////////////////////////////////////////////////////////////////////
+}
+//export default MouseDropIcon;
+////////////////////////////////////////////////////////////////////////////////
 
-
-	///Module
-	//import React from "react";
-	//import DataItem from "./DataItem";
-	//import Atomic from "./atomic";
-	class InfoPanel extends React.Component {
-		constructor(props){
-			super(props);
-			this.state = {addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false}
-			Atomic.setReactClassUpdate("InfoPanel");
-			Atomic.InfoPanel.update = Atomic.InfoPanel.update.bind(this);
-		}
-		showAddRestaurant(){
-			if (this.state.addRestFlag === false && this.state.blockAddRest === false){
-				Atomic.removeMarkerListeners();
-				$("#mouseDropIcon").show();
-				Atomic.GoogleMap.update({mouseDrop:true});
-				this.setState({addRestFlag:true, addRestaurantText:"Cancel Restaurant"})
-			}
-			if (this.state.addRestFlag === true && this.state.blockAddRest === false){
-				Atomic.addMarkerListeners();
-				Atomic.GoogleMap.update({mouseDrop:false});
-				$("#mouseDropIcon").hide();
-				this.setState({addRestFlag:false, addRestaurantText:"+ Restaurant"})
-			}
-		}
-		filterRatings(filterType){
-			if (this.state.addRestFlag === false && this.state.blockAddRest === false){
-				let filterValue;
-				filterValue = $("input[name=filterRange]").val();
-				filterValue = filterValue/10;
-				if (filterType === "high"){
-					Atomic.setInfoData(filterValue,5);
-					Atomic.InfoPanel.update();
-				}else {
-					Atomic.setInfoData(0,filterValue);
-					Atomic.InfoPanel.update();
-				}
-			}
-		}
-		render(){
-			let normalStyle, buttonStyle;
-			if (this.state.blockAddRest === true || this.state.addRestFlag === true){
-				normalStyle = {opacity:0.5, pointerEvents:"none"};
-				buttonStyle = {marginLeft:15, marginRight:15, opacity:0.5, pointerEvents:"none"};
-			}else{
-				normalStyle = {opacity:1, pointerEvents:"all"};
-				buttonStyle = {marginLeft:15, marginRight:15, opacity:1, pointerEvents:"all"};
-			}
-			return (
-				<div id="infoPanel">
-				<div className="popup-header">
-				<div className="popup-add" onClick={() => this.showAddRestaurant()}>{this.state.addRestaurantText}</div>
-				</div>
-				<div id="filterPanel">
-				<button  className="data-button" style={buttonStyle} onClick={() => this.filterRatings("low")}>Filter Lower</button>
-				<input className="filter-range" style={normalStyle} type="range" name="filterRange" min="1" max="50"/>
-				<button  className="data-button" style={buttonStyle} onClick={() => this.filterRatings("high")}>Filter Higher</button>
-				</div>
-				<div style={normalStyle}>{Atomic.infoData}</div>
-				</div>
-			);
-		}
+///Module
+//import React from "react";
+//import Atomic from "./atomic";
+class ReviewFooter extends React.Component {
+	render(){
+		return (
+			<div id="reviewFooter"></div>
+		);
 	}
-	//export default InfoPanel;
-	////////////////////////////////////////////////////////////////////////////////
-
-	///Module
-	//import React from "react";
-	//import Atomic from "./atomic";
-	class MouseDropIcon extends React.Component {
-		constructor(props){
-			super(props);
-			this.state = {x:"0px", y:"0px", drop:false}
-		}
-		moveIcon(e){
-			let left = ((e.pageX-22) + "px");
-			let top = ((e.pageY-45) + "px");
-			this.setState({x:left, y:top});
-		}
-		componentDidMount(){
-			$(document).on("mousemove",(e) => this.moveIcon(e));
-		};
-		render(){
-			let pos = {
-				left:this.state.x,
-				top:this.state.y,
-			};
-			return (
-				<div id="mouseDropIcon" style={pos}></div>
-			);
-		}
-	}
-	//export default MouseDropIcon;
-	////////////////////////////////////////////////////////////////////////////////
-
-	///Module
-	//import React from "react";
-	//import Atomic from "./atomic";
-	class ReviewFooter extends React.Component {
-		render(){
-			return (
-				<div id="reviewFooter"></div>
-			);
-		}
-	}
-	//export default ReviewFooter;
-	////////////////////////////////////////////////////////////////////////////////
+}
+//export default ReviewFooter;
+////////////////////////////////////////////////////////////////////////////////
 
 
-	//MAIN index.js module   ///////////////////
-	
-	//import React from "react";
-	//import ReactDOM from "react-dom";
-	//import SVGClipDefs from "./SVGClipDefs";
-	//import AppTitleBar from "./AppTitleBar";
-	//import GoogleMap from "./GoogleMap";
-	//import InfoPanel from "./InfoPanel";
-	//import ReviewFooter from "./ReviewFooter";
-	//import MouseDropIcon from "./MouseDropIcon";
+//MAIN index.js module   ///////////////////
+//import React from "react";
+//import ReactDOM from "react-dom";
+//import SVGClipDefs from "./SVGClipDefs";
+//import AppTitleBar from "./AppTitleBar";
+//import GoogleMap from "./GoogleMap";
+//import InfoPanel from "./InfoPanel";
+//import ReviewFooter from "./ReviewFooter";
+//import MouseDropIcon from "./MouseDropIcon";
 
-	//PUBLIC
-	var destination = document.querySelector("#root");
+//PUBLIC
+var destination = document.querySelector("#root");
 
-	ReactDOM.render(
-		<div>
-		<SVGClipDefs/>
-		<div>
-		<AppTitleBar></AppTitleBar>
-		</div>
-		<div id="centerSection">
-		<GoogleMap></GoogleMap>
-		<InfoPanel></InfoPanel>
-		</div>
-		<ReviewFooter></ReviewFooter>
-		<MouseDropIcon></MouseDropIcon>
-		</div>
-		,destination
-	);
-	////////////////////////////////////////////////////////////////////////////////
+ReactDOM.render(
+	<div>
+	<SVGClipDefs/>
+	<div>
+	<AppTitleBar></AppTitleBar>
+	</div>
+	<div id="centerSection">
+	<GoogleMap></GoogleMap>
+	<InfoPanel></InfoPanel>
+	</div>
+	<ReviewFooter></ReviewFooter>
+	<MouseDropIcon></MouseDropIcon>
+	</div>
+	,destination
+);
+////////////////////////////////////////////////////////////////////////////////
 
-	////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
