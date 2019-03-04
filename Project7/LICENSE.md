@@ -1,6 +1,6 @@
 Copyright (c) 2019, Polymathic Design, M J Livesey, All rights reserved.
 
-Redistribution and use in source and binary forms, with or without modification, are not permitted except with the explicity consent of the copyright holder.
+Redistribution and use in source and binary forms, with or without modification, are not permitted except with the explicity written consent of the copyright holder.
 
 Redistributions of source code with the consent of the copyright holder must retain the above copyright notice, this list of conditions and the following disclaimer.
 
