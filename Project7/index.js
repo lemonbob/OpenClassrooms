@@ -19,6 +19,9 @@ class PlaceInput extends React.Component {
 		);
 	}
 }
+//export default PlaceInput;
+////////////////////////////////////////////////////////////////////////////////
+
 
 ///Module
 //import React from "react";
