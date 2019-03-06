@@ -22,6 +22,27 @@ class PlaceInput extends React.Component {
 //export default PlaceInput;
 ////////////////////////////////////////////////////////////////////////////////
 
+///Module
+//import React from "react";
+class SearchMap extends React.Component {
+	constructor(props){
+		super(props);
+	}
+	searchMapView(){
+		Atomic.search();
+	}
+	render(){
+		let searchStyle = {margin:"0px", fontSize:"100%", padding:"10px", borderRadius:"10px"};
+		return(
+			<div id="searchWrapper">
+			<div className="data-button" style={searchStyle} onClick={this.searchMapView}>Search Map View<img id="magnifyImage" src="src/img/magnify.svg"></img></div>
+			</div>
+		);
+	}
+}
+//export default PlaceInput;
+////////////////////////////////////////////////////////////////////////////////
+
 
 ///Module
 //import React from "react";
@@ -78,6 +99,7 @@ class AppTitleBar extends React.Component {
 			<div className="title-img" style={bgImage1}></div>
 			<div className="title-img" style={bgImage2}></div>
 			<object className="title-logo"><embed src="src/img/RRlogo.svg"></embed></object>
+			<SearchMap></SearchMap>
 			<PlaceInput></PlaceInput>
 			</div>
 		);
@@ -108,9 +130,10 @@ class ReviewForm extends React.Component{
 		Atomic.clearAddReviewForm();
 		Atomic.restaurantDataStore[i].ratings.push({stars:stars, comment:comment});
 		Atomic.setInfoData();
-		Atomic.InfoPanel.update({addRestFlag:false, addRestaurantText:"Restaurant Details", blockAddRest:true});
-		Atomic.StreetMapData.update({reviewText:"+ Review"});
+		setTimeout(() => 	Atomic.StreetMapData().setState({reviewText:"+ Review"}),1000);
+		Atomic.InfoPanel().setState({addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false});
 		$("#popupAddReview").hide(1000);
+		$("#popupInfo").hide(1000);
 	}
 	render(){
 		return(
@@ -167,10 +190,10 @@ class NewRestaurantForm extends React.Component{
 		rAddr += $("input[name=postcode]").val();
 		rReviewList = [];
 		Atomic.clearAddRestarauntForm();
-		Atomic.StreetMapData.update({reviewText:"+ Review"});
+		setTimeout(() => 	Atomic.StreetMapData().setState({reviewText:"+ Review"}),1000);
 		Atomic.restaurantDataStore.push({restaurantName:rName, address:rAddr, lat:this.props.swData.lat, lng:this.props.swData.lng, ratings:rReviewList})
 		Atomic.setInfoData();
-		Atomic.InfoPanel.update({addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false});
+		Atomic.InfoPanel().setState({addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false});
 	}
 	render(){
 		return(
@@ -210,14 +233,15 @@ class StreetMapData extends React.Component {
 		super(props);
 		this.state = {
 			googlePlacesData:false,
-			reviewText:"+ Review"
+			reviewText:"+ Review",
+			controlsActive:false
 		};
-		Atomic.setReactClassUpdate("StreetMapData");
-		Atomic.StreetMapData.update = Atomic.StreetMapData.update.bind(this);
+		Atomic.StreetMapData = () => this;
 	}
 	hidePopup(){
-		Atomic.InfoPanel.update({addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false});
-		this.setState({reviewText:"+ Review"});
+		Atomic.StreetMapData().setState({controlsActive: false});
+		Atomic.InfoPanel().setState({addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false});
+		setTimeout(() => 	Atomic.StreetMapData().setState({reviewText:"+ Review"}),1000);
 		$("#popupInfo").hide(1000);
 		$("#popupAddReview").hide(1000);
 		Atomic.addMarkerListeners();
@@ -227,14 +251,14 @@ class StreetMapData extends React.Component {
 		}
 	}
 	showAddReview(){
-		if (this.props.swData.addRest === false && this.state.googlePlacesData === false){
+		if (this.props.swData.addRest === false && this.state.googlePlacesData === false && this.state.controlsActive === true){
 			if (this.state.reviewText === "+ Review"){
-				Atomic.InfoPanel.update({addRestFlag:false, addRestaurantText:"Add Review", blockAddRest:true});
-				this.setState({reviewText:"Cancel Review"})
+				Atomic.InfoPanel().setState({addRestFlag:false, addRestaurantText:"Add Review", blockAddRest:true});
+				Atomic.StreetMapData().setState({reviewText:"Cancel Review"});
 				$("#popupAddReview").show(1000);
 			}else{
-				Atomic.InfoPanel.update({addRestFlag:false, addRestaurantText:"Restaurant Details", blockAddRest:true});
-				this.setState({reviewText:"+ Review"})
+				Atomic.InfoPanel().setState({addRestFlag:false, addRestaurantText:"Restaurant Details", blockAddRest:true});
+				Atomic.StreetMapData().setState({reviewText:"+ Review"})
 				$("#popupAddReview").hide(1000);
 			}
 		}
@@ -272,8 +296,7 @@ class GoogleMap extends React.Component {
 			showPopUp:false,
 			mouseDrop:false
 		};
-		Atomic.setReactClassUpdate("GoogleMap");
-		Atomic.GoogleMap.update = Atomic.GoogleMap.update.bind(this);
+		Atomic.GoogleMap = () => this;
 	}
 	addRestaurantMarker(e){
 		if (this.state.mouseDrop === true){
@@ -284,10 +307,10 @@ class GoogleMap extends React.Component {
 			markerData = {mNum:markerNum, url:url, lat:pos.lat, lng:pos.lng, addRest:true}
 			newMarker = new google.maps.Marker({position: pos, icon:'src/img/ricon_sml.png', map: Atomic.map});
 			Atomic.marker.push(newMarker);
-			Atomic.GoogleMap.update({markerData:markerData, mouseDrop:false});
-			Atomic.InfoPanel.update({addRestaurantText:"Enter Details", blockAddRest:true});
-			Atomic.StreetMapData.update({reviewText:"Add Restaurant"})
-			Atomic.map.setCenter(pos);
+			Atomic.GoogleMap().setState({markerData:markerData, mouseDrop:false});
+			Atomic.InfoPanel().setState({addRestaurantText:"Enter Details", blockAddRest:true});
+			Atomic.StreetMapData().setState({reviewText:"Add Restaurant"})
+			Atomic.map.panTo(pos);
 			$("#mouseDropIcon").hide();
 			$("#popupAddRestaurant").show();
 			$("#popupInfo").show(1000);
@@ -312,10 +335,10 @@ class GoogleMap extends React.Component {
 		Atomic.location = {lat:50.720932, lng:-1.903761};
 		Atomic.map = new google.maps.Map(document.getElementById('map'), {zoom: 17, center: Atomic.location});
 		Atomic.map.addListener('click', (e) => this.addRestaurantMarker(e));
-		//google.maps.event.addListenerOnce(Atomic.map, 'idle', function(){console.log("mapLoaded");});
-		//google.maps.event.addListenerOnce(Atomic.map, 'tilesloaded', function(){console.log("mapLoaded");});
-		//Atomic.map.addEventListener('google-map-ready', function(e) {console.log("mapLoaded");});
-		google.maps.event.addListenerOnce(Atomic.map, 'bounds_changed', function(){Atomic.search();});
+		google.maps.event.addListenerOnce(Atomic.map, 'idle', function(){Atomic.mapLoaded = true;Atomic.search();});
+		//google.maps.event.addListenerOnce(Atomic.map, 'tilesloaded', function(){Atomic.mapLoaded = true;Atomic.search();});
+		//Atomic.map.addEventListener('google-map-ready', function(){Atomic.mapLoaded = true;Atomic.search();});
+		//google.maps.event.addListenerOnce(Atomic.map, 'bounds_changed', function(){Atomic.mapLoaded = true;Atomic.search();});
 		Atomic.loadRestaurantData("src/restaurantData.json");
 		this.getLocation();
 	};
@@ -429,25 +452,30 @@ class DataItem extends React.Component {
 		else {this.setState({height:"0px"});}
 	};
 	bounceMapMarker(){
-		Atomic.marker[this.props.dataIndex+1].setAnimation(google.maps.Animation.BOUNCE);
-		setTimeout(() => this.stopBounce(), 3000);
-		Atomic.map.panTo(Atomic.marker[this.props.dataIndex+1].getPosition());
-		//Atomic.search();
+		Atomic.marker[this.props.index+1].setAnimation(google.maps.Animation.BOUNCE);
+		setTimeout(() => this.stopBounce(), 7000);
+		Atomic.map.panTo(Atomic.marker[this.props.index+1].getPosition());
 	};
 	stopBounce(){
-		Atomic.marker[this.props.dataIndex+1].setAnimation(null);
+		Atomic.marker[this.props.index+1].setAnimation(null);
 	}
 	render(){
 		let dataItemStyle = {display:this.props.dataItemStyle};
 		let dataButtonStyle = {display:"block"};
+		let featureStyle = {backgroundImage:"linear-gradient(135deg,rgba(255,101,255,0.3), rgba(8,8,158,0.3))"};
+		let featureText = "Google Places...";
+		if (this.props.index < Atomic.restaurantDataStore.length){featureStyle = {backgroundImage:"linear-gradient(135deg,rgb(255,101,0), rgb(158,8,8))"};featureText = "feature listing...";}
 		if (this.props.restReviewList === "none"){dataButtonStyle = {display:"none"};}
 		return (
 			<div className="data-item glow-hover" style={dataItemStyle} onClick={() => this.bounceMapMarker()}>
+			<div className="feature-bar" style={featureStyle}><p><em>{featureText}</em></p></div>
+			<div className="data-listing">
 			<h1>{this.props.restName}</h1>
 			<p>{this.props.restAddr}</p>
 			<p><br></br><StarRating stars={this.props.restRating}></StarRating></p>
 			<button className="data-button" style={dataButtonStyle} onClick={() => this.toggleList()}>Show/Hide Reviews</button>
 			<ReviewList restReviewList={this.props.restReviewList} reviewShow={this.state.height}></ReviewList>
+			</div>
 			</div>
 		);
 	}
@@ -463,20 +491,22 @@ class DataItem extends React.Component {
 class InfoPanel extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false}
-		Atomic.setReactClassUpdate("InfoPanel");
-		Atomic.InfoPanel.update = Atomic.InfoPanel.update.bind(this);
+		this.state = {addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false, filterValue:"0", filterValueStyle:{display:"block"}}
+		Atomic.InfoPanel = () => this;
 	}
 	showAddRestaurant(){
 		if (this.state.addRestFlag === false && this.state.blockAddRest === false){
+			Atomic.filterLow = 0;
+			Atomic.filterHigh = 5;
+			Atomic.setInfoData();
 			Atomic.removeMarkerListeners();
 			$("#mouseDropIcon").show();
-			Atomic.GoogleMap.update({mouseDrop:true});
+			Atomic.GoogleMap().setState({mouseDrop:true});
 			this.setState({addRestFlag:true, addRestaurantText:"Cancel Restaurant"})
 		}
 		if (this.state.addRestFlag === true && this.state.blockAddRest === false){
 			Atomic.addMarkerListeners();
-			Atomic.GoogleMap.update({mouseDrop:false});
+			Atomic.GoogleMap().setState({mouseDrop:false});
 			$("#mouseDropIcon").hide();
 			this.setState({addRestFlag:false, addRestaurantText:"+ Restaurant"})
 		}
@@ -487,16 +517,32 @@ class InfoPanel extends React.Component {
 			filterValue = $("input[name=filterRange]").val();
 			filterValue = filterValue/10;
 			if (filterType === "high"){
-				Atomic.setInfoData(filterValue,5);
-				Atomic.InfoPanel.update();
+				Atomic.filterLow = filterValue;
+				Atomic.filterHigh = 5;
+				Atomic.setInfoData();
+				Atomic.InfoPanel().forceUpdate();
 			}else {
-				Atomic.setInfoData(0,filterValue);
-				Atomic.InfoPanel.update();
+				Atomic.filterLow = 0;
+				Atomic.filterHigh = filterValue;
+				Atomic.setInfoData();
+				Atomic.InfoPanel().forceUpdate();
 			}
 		}
 	}
+/*
+	filterShow(e){
+		let filterValue;
+		let left = e.clientX;
+		let top = e.clientY;
+		console.log(e);
+		filterValue = ($("input[name=filterRange]").val()/10);
+		console.log(filterValue);
+		this.setState({filterValueStyle:{display:"block", top:top, left:left}, filterValue:filterValue.toString()})
+	}*/
 	render(){
-		let normalStyle, buttonStyle;
+
+		let normalStyle, buttonStyle, filterValueStyle;
+
 		if (this.state.blockAddRest === true || this.state.addRestFlag === true){
 			normalStyle = {opacity:0.5, pointerEvents:"none"};
 			buttonStyle = {marginLeft:15, marginRight:15, opacity:0.5, pointerEvents:"none"};
@@ -510,9 +556,9 @@ class InfoPanel extends React.Component {
 			<div className="popup-add" onClick={() => this.showAddRestaurant()}>{this.state.addRestaurantText}</div>
 			</div>
 			<div id="filterPanel">
-			<button  className="data-button" style={buttonStyle} onClick={() => this.filterRatings("low")}>Filter Lower</button>
+			<button  className="data-button" style={buttonStyle} onClick={() => this.filterRatings("low")}>Filter {"<"}</button>
 			<input className="filter-range" style={normalStyle} type="range" name="filterRange" min="1" max="50"/>
-			<button  className="data-button" style={buttonStyle} onClick={() => this.filterRatings("high")}>Filter Higher</button>
+			<button  className="data-button" style={buttonStyle} onClick={() => this.filterRatings("high")}>Filter {">"}</button>
 			</div>
 			<div style={normalStyle}>{Atomic.infoData}</div>
 			</div>
@@ -528,7 +574,8 @@ class InfoPanel extends React.Component {
 class MouseDropIcon extends React.Component {
 	constructor(props){
 		super(props);
-		this.state = {x:"0px", y:"0px", drop:false}
+		this.state = {x:"0px", y:"0px", drop:false};
+		Atomic.MouseDropIcon = () => this;
 	}
 	moveIcon(e){
 		let left = ((e.pageX-22) + "px");
@@ -557,7 +604,23 @@ class MouseDropIcon extends React.Component {
 class ReviewFooter extends React.Component {
 	render(){
 		return (
-			<div id="reviewFooter"></div>
+			<div id="reviewFooter">
+			<div className="footer-item">
+			<p>Reactive Reviews<br></br>
+			An OpenClassrooms Project<br></br>
+			By M J Livesey<br></br>
+			PolymathicDesign.com<br></br>
+			Copyright ©2019
+			</p></div>
+			<div className="footer-item">
+			<p>React Project<br></br>
+			Powered by Atomic<br></br>
+			By M J Livesey<br></br>
+			PolymathicDesign.com<br></br>
+			Copyright ©2019
+			</p></div>
+			<div className="footer-item"><img src="src/img/oc.svg"></img></div>
+			</div>
 		);
 	}
 }
