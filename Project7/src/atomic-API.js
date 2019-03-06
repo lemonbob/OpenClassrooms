@@ -12,7 +12,7 @@ var Atomic = {};
 
 //to allow external access t any React Class including state and functions
 //in constructor call:
-//Atomic.nameofreactclass = () = this;
+//Atomic.nameofreactclass = () => this;
 //to setState call:
 //Atomic.nameofreactclass().setState({object});
 //to return a state variable into local x:
