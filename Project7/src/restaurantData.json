@@ -1,0 +1,23 @@
+[
+{
+"restaurantName":"Steak Is Yum",
+"address":"12 The Road, TownVille. 100456",
+"lat":50.720932,
+"lng":-1.905761,
+"ratings":[{"stars":4,"comment":"Amazing Steak!"},{"stars":5,"comment":"The burgers are the best in the world!"},{"stars":5,"comment":"I love meat!"},{"stars":3,"comment":"Good food, but average service!"}]
+},
+{
+"restaurantName":"The Veggie Box",
+"address":"16 The Road, TownVille. 100356",
+"lat":50.719932,
+"lng":-1.901761,
+"ratings":[{"stars":2,"comment":"Too many vegetables!"},{"stars":1,"comment":"I had the worst cabbage stew here!"},{"stars":2,"comment":"Errg!"},{"stars":2,"comment":"Abysmal service!"}]
+},
+{
+"restaurantName":"The Horses Hoof",
+"address":"75 The Road, TownVille. 100856",
+"lat":50.722032,
+"lng":-1.90361,
+"ratings":[{"stars":4,"comment":"Lots of amazing dishes!"},{"stars":5,"comment":"First rate service, our meals came so quickly!"},{"stars":5,"comment":"I agree, the service is amazing!"},{"stars":5,"comment":"Good food, good service, I will be back!"}]
+}
+]

@@ -1,0 +1,12 @@
+/*index.css*/
+
+#root{
+	padding:50px;
+	background-color:#0af;
+}
+
+#root h1 {
+	font-size: 144px;
+	font-family: sans-serif;
+	color: #0080A8;	
+}
