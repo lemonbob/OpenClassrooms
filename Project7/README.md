@@ -2,8 +2,8 @@
 
 **Note - the APIKEY has been removed from program files, to run this program you need to enter your own GoogleMaps API key in index.html and Atomic-API.js**
 
-For this project, you have to learn to use external APIs such as Google Maps and Google Places. 
-That's not all: you will have to integrate all this information in a clear, organized way in your application!
+>For this project, you have to learn to use external APIs such as Google Maps and Google Places. 
+>That's not all: you will have to integrate all this information in a clear, organized way in your application!
 
 ## Step 1: Restaurants
 Start with the real foundation of your application. There will be 2 main sections:
