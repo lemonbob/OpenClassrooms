@@ -1,5 +1,7 @@
 # Project 7 Restaurant Review Site - using ReactJS
 
+Note - APIKEY has been removed from file, to run this program you need to enter your own GoogleMaps API key in index.html and Atomic-API.js
+
 For this project, you have to learn to use external APIs such as Google Maps and Google Places. 
 That's not all: you will have to integrate all this information in a clear, organized way in your application!
 
