@@ -6,17 +6,18 @@
 //GLOBALS
 var Atomic = {};
 
-
 //IMPLEMENTATION////////////////////////////////////////////////////////////////
 //REACT CLASS METHODS
 
 //to allow external access t any React Class including state and functions
 //in constructor call:
-//Atomic.nameofreactclass = () => this;
+//Atomic.nameofreactclass = () = this;
 //to setState call:
 //Atomic.nameofreactclass().setState({object});
 //to return a state variable into local x:
 //let x = Atomic.nameofreactclass().state.variablename;
+//to call a React class function
+//Atomic.nameofreactclass().reactclassfunction();
 
 ////////////////////////////////////////////////////////////////////////////////
 //NON-REACT IMPLEMENTATION
@@ -42,7 +43,7 @@ Atomic.addMapMarker = function(lat, lng, visibility, icon){
 
 	if (Atomic.marker.length === 0){icon = null};
 	pos = {lat:lat,lng:lng};
-	if (visibility === "visible"){newMarker = new google.maps.Marker({position: pos, icon:icon, map: Atomic.map});}
+	if (visibility === "block"){newMarker = new google.maps.Marker({position: pos, icon:icon, map: Atomic.map});}
 	else {newMarker = new google.maps.Marker({position: pos, icon:icon, map: null});}
 	Atomic.marker.push(newMarker);
 }
@@ -87,11 +88,10 @@ Atomic.markerClick = function(markerNum){
 	lng = Atomic.marker[markerNum].position.lng();
 	url = "https://maps.googleapis.com/maps/api/streetview?size=320x300&location=" + lat + "," + lng + "&fov=90&heading=235&pitch=10&" + Atomic.mapsAPIkey;
 	markerData = {mNum:(markerNum-1), url:url, lat:lat, lng:lng, addRest:false}
-	Atomic.GoogleMap().setState({markerData:markerData});
 	Atomic.map.panTo(Atomic.marker[markerNum].getPosition());
 	Atomic.InfoPanel().setState({addRestFlag:false, addRestaurantText:"Restaurant Details", blockAddRest:true});
-	if (markerNum > Atomic.restaurantDataStore.length){Atomic.StreetMapData().setState({reviewText:"Google Places Data", googlePlacesData:true});}
-	else{Atomic.StreetMapData().setState({reviewText:"+ Review", googlePlacesData:false, controlsActive:true});}
+	if (markerNum > Atomic.restaurantDataStore.length){Atomic.StreetMapData().setState({reviewText:"Google Places Data", googlePlacesData:true, markerData:markerData});}
+	else{Atomic.StreetMapData().setState({reviewText:"+ Review", googlePlacesData:false, controlsActive:true, markerData:markerData});}
 	$("#popupAddRestaurant").hide();
 	$("#popupInfo").show(1000);
 }
@@ -104,25 +104,26 @@ Atomic.setInfoData = function(){
 		Atomic.removeMapMarkers();
 	}
 	Atomic.infoData = [];
-	Atomic.addMapMarker(Atomic.location.lat,Atomic.location.lng,"visible");
+	Atomic.addMapMarker(Atomic.location.lat,Atomic.location.lng,"block");
 	for (let i=0;i<Atomic.restaurantDataStore.length;i++){
 		let rName = Atomic.restaurantDataStore[i].restaurantName;
 		let rAddr = Atomic.restaurantDataStore[i].address;
 		let rRating = 0;
 		let rReviewList = [];
-		let rVisible = "visible";
-		let rDisplay = "block";
-		if (Atomic.restaurantDataStore[i].ratings.length !== 0){
-			rReviewList = Atomic.restaurantDataStore[i].ratings;
-			Atomic.restaurantDataStore[i].ratings.forEach(function(v,i,a){rRating += a[i].stars;});
-			rRating = rRating/Atomic.restaurantDataStore[i].ratings.length;
-			if (rRating >= Atomic.filterLow && rRating <= Atomic.filterHigh){rVisible = "visible";rDisplay = "block";}else{rVisible = "hidden";rDisplay = "none";};
+		let rVisible = "block";
+		if (Atomic.restaurantDataStore[i].rReviewList.length !== 0){
+			//get reverse order of reviews, latest first, and only 5 max reviews
+			Atomic.restaurantDataStore[i].rReviewList.forEach(function(v,i,a){if (i<5){rReviewList[i] = a[a.length-i-1]};});
+			Atomic.restaurantDataStore[i].rReviewList.forEach(function(v,i,a){rRating += a[i].stars;});
+			rRating = rRating/Atomic.restaurantDataStore[i].rReviewList.length;
+			Atomic.restaurantDataStore[i].rating = rRating;
+			if (rRating >= Atomic.filterLow && rRating <= Atomic.filterHigh){rVisible = "block";}else{rVisible = "none";};
 		}else{
 			rRating = "no reviews";
 			rReviewList[0] = {comment:"no reviews", stars:"no reviews"};
-			if (Atomic.filterLow < 2){rVisible = "visible";rDisplay = "block";}else{rVisible = "hidden";rDisplay = "none";}
+			rVisible = "block";
 		}
-		Atomic.infoData.push(<DataItem key={"review"+i} restName={rName} restAddr={rAddr} restRating={rRating} restReviewList={rReviewList} dataItemStyle={rDisplay} index={i}></DataItem>);
+		Atomic.infoData.push(<DataItem key={"review"+i} restName={rName} restAddr={rAddr} restRating={rRating} restReviewList={rReviewList} display={rVisible} index={i}></DataItem>);
 		Atomic.addMapMarker(Atomic.restaurantDataStore[i].lat, Atomic.restaurantDataStore[i].lng, rVisible, 'src/img/ricon_sml.png');
 	}
 	for (let i=0;i<Atomic.googleRestaurantData.length;i++){
@@ -130,11 +131,11 @@ Atomic.setInfoData = function(){
 		let rAddr = Atomic.googleRestaurantData[i].vicinity;
 		let rRating = Atomic.googleRestaurantData[i].rating;
 		let rReviewList = Atomic.googleRestaurantData[i].rReviewList;
-		let rVisible = "visible";
-		let rDisplay = "block";
-		if (rRating !== "no reviews" && rRating >= Atomic.filterLow && rRating <= Atomic.filterHigh){rVisible = "visible";rDisplay = "block";}else{rVisible = "hidden";rDisplay = "none";};
-		if (rRating === "no reviews"){if (Atomic.filterLow < 2){rVisible = "visible";rDisplay = "block";}else{rVisible = "hidden";rDisplay = "none";}};
-		Atomic.infoData.push(<DataItem key={"review"+i+Atomic.restaurantDataStore.length} restName={rName} restAddr={rAddr} restRating={rRating} restReviewList={rReviewList} dataItemStyle={rDisplay} index={i+Atomic.restaurantDataStore.length}></DataItem>);
+		let rVisible = "block";
+		let rIndex = i+Atomic.restaurantDataStore.length;
+		if (rRating !== "no reviews" && rRating >= Atomic.filterLow && rRating <= Atomic.filterHigh){rVisible = "block";}else{rVisible = "none";};
+		if (rRating === "no reviews"){rVisible = "block";}
+		Atomic.infoData.push(<DataItem key={"review"+rIndex} restName={rName} restAddr={rAddr} restRating={rRating} restReviewList={rReviewList} display={rVisible} index={rIndex}></DataItem>);
 		Atomic.addMapMarker(Atomic.googleRestaurantData[i].geometry.location.lat(), Atomic.googleRestaurantData[i].geometry.location.lng(), rVisible, 'src/img/ricon_sml2.png');
 	}
 	Atomic.addMarkerListeners();
@@ -142,9 +143,8 @@ Atomic.setInfoData = function(){
 
 //filter results
 Atomic.filterRestaurants = function(filterLow,filterHigh){
-	console.log("filter results");
 	for (let i=0;i<Atomic.restaurantDataStore.length;i++){
-		if (rRating >= filterLow && rRating <= filterHigh){rVisible = "visible";rDisplay = "block";}else{rVisible = "hidden";rDisplay = "none";};
+		if (rRating >= filterLow && rRating <= filterHigh){rVisible = "block";}else{rVisible = "none";};
 	}
 
 }
@@ -158,22 +158,25 @@ Atomic.setGoogleRestarauntReviewList = function(index, place_id){
 			console.log(index + " " + place_id);
 			return;
 		}
-
 		if (place.reviews === undefined){
 			rReviewList[0] = {comment:"no reviews", stars:"no reviews"};
 		}
 		else{
-			for (let i=0;i<place.reviews.length;i++){
+			let reviewLength = place.reviews.length>5?reviewLength=5:reviewLength=place.reviews.length;
+			for (let i=0;i<reviewLength;i++){
 				rReviewList.push({stars:place.reviews[i].rating, comment:place.reviews[i].text});
 			}
 		}
 		let rName = Atomic.googleRestaurantData[index].name;
 		let rAddr = Atomic.googleRestaurantData[index].vicinity;
 		let rRating = Atomic.googleRestaurantData[index].rating;
-		let rDisplay = "block";
-		let rIndex = index+Atomic.restaurantDataStore.length
+		let rIndex = index+Atomic.restaurantDataStore.length;
+		let rVisible = "block";
+		if (Atomic.googleRestaurantData[index].rating !== "no reviews"){
+			if (rRating >= Atomic.filterLow && rRating <= Atomic.filterHigh){rVisible = "block";}else{rVisible = "none";};
+		}
 		Atomic.googleRestaurantData[index].rReviewList = rReviewList;
-		Atomic.infoData[rIndex] = (<DataItem key={"review"+rIndex} restName={rName} restAddr={rAddr} restRating={rRating} restReviewList={rReviewList} dataItemStyle={rDisplay} index={rIndex}></DataItem>);
+		Atomic.infoData[rIndex] = (<DataItem key={"review"+rIndex} restName={rName} restAddr={rAddr} restRating={rRating} restReviewList={rReviewList} display={rVisible} index={rIndex}></DataItem>);
 		Atomic.InfoPanel().forceUpdate();
 	});
 }
@@ -215,8 +218,8 @@ Atomic.search = function(){
 	if (Atomic.mapLoaded === true){
 		search = {bounds: Atomic.map.getBounds(), types: ['restaurant']};
 		Atomic.placeSearch.nearbySearch(search, function(results, status, pagination){
+			Atomic.googleRestaurantData = [];
 			if (status === google.maps.places.PlacesServiceStatus.OK){
-				Atomic.googleRestaurantData = [];
 				let rReviewList = [];
 				rReviewList[0] = {comment:"no reviews", stars:"no reviews"};
 				rlength = results.length;
@@ -230,7 +233,6 @@ Atomic.search = function(){
 			Atomic.setInfoData();
 			Atomic.InfoPanel().setState({addRestFlag:false, addRestaurantText:"+ Restaurant", blockAddRest:false});
 			Atomic.marker[0].setAnimation(google.maps.Animation.BOUNCE);
-			//for (let i=0;i<Atomic.googleRestaurantData.length;i++){Atomic.setGoogleRestarauntReviewList(i,Atomic.googleRestaurantData[i].place_id);};
 			setTimeout(function(){Atomic.marker[0].setAnimation(null)},7000);
 		});
 	}
