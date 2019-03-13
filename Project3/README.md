@@ -24,7 +24,7 @@ Here's what she says:
 >
 >Shows will be free and open to everyone, but I want people to be able to pre-register so that I'm able to estimate how many people >might come and so that we can close registration if it reaches the venue’s capacity of 5,000 people.
 >
->I'd like to have a professional web address, either a .com or .org -- you decide, but just make sure it's relevant to the film >festival.
+>I'd like to have a professional web address, either a .com or .org -- you decide, but just make sure it's relevant to the film festival.
  
 Project to-dos
 
