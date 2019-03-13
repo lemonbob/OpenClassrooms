@@ -1,0 +1,515 @@
+<!doctype HTML>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brooklyn Outdoor Film Festival</title>
+  <link rel = "stylesheet" href ="css/bootstrap.min.css">
+  <link rel = "stylesheet" href ="css/brooklyn.css">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script src = "js/jquery-3.3.1.min.js"></script>
+  <script src = "js/bootstrap.min.js"></script>
+</head>
+<body>
+  <!-- Navbar-->
+  <nav class="ml-nav-class navbar navbar-default ml-fonts">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mlNavBar" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand ml-fonts ml-brand" href="index.html">Brooklyn Outdoor Film Festival</a>
+      </div>
+      <div class="collapse navbar-collapse align-middle text-center" id="mlNavBar">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="active dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Home<span class="caret"></span></a>
+            <ul class="dropdown-menu ml-drop-down">
+              <li><a href="#infoSection">About</a></li>
+              <li><a href="#infoSection">News</a></li>
+              <li><a href="#infoSection">Links</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Films<span class="caret"></span></a>
+            <ul class="dropdown-menu ml-drop-down">
+              <li><a href="#filmsSection">All films</a></li>
+              <li><a href="#filmsSection">August 5th</a></li>
+              <li><a href="#filmsSection">August 6th</a></li>
+              <li><a href="#filmsSection">August 7th</a></li>
+              <li><a href="#filmsSection">August 8th</a></li>
+            </ul>
+          </li>
+          <li><a href="#contactSection">Tickets</a></li>
+          <li><a href="#contactSection">Contact</a></li>
+        </ul>
+
+      </div>
+    </div>
+  </nav>
+  <!-- Navbar section end-->
+  <!-- header-->
+  <header id="main_banner">
+    <div id="brooklyn" class="ml-fonts fade-in">
+      <img src="img/brooklyn.svg">
+      <br><br>
+      <p>Brooklyn Bridge Park</p>
+      <p>August 5th - 8th 2019</p>
+      <p>Free entry. Films for everyone!</p>
+      <p>(double click for trailers.)</p>
+    </div>
+    <div id="mlCarousel">
+      <img class="film" src="img/film.svg">
+      <img class="film" src="img/film.svg">
+      <img class="film" src="img/film.svg">
+      <img class="film" src="img/film.svg">
+      <img class="film" src="img/film.svg">
+      <a href="index.html"><img class="filmLink film" src="img/film1.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film2.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film3.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film4.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film5.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film6.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film7.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film8.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film9.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film10.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film11.jpg"></a>
+      <a href="index.html"><img class="filmLink film" src="img/film12.jpg"></a>
+    </div>
+    <div id="carouselControls">
+      <img class="film-controls" src="img/control.svg">
+      <img class="film-controls" src="img/control.svg">
+    </div>
+    <div id="headerInfo" class="ml-fonts visible-lg fade-in">
+      <h1>Brooklyn Bridge Park</h1>
+      <h2>August 5th - 8th 2019</h2>
+      <h2>Free entry</h2>
+      <h2>Films for everyone</h2>
+      <p>(double click for trailers.)</p>
+    </div>
+  </header>
+  <!-- header end-->
+
+  <div class="container">
+    <section class="row mb-3">
+      <div class="col-xs-6 fade-in ml-fonts visible-sm visible-md">
+        <h1>Brooklyn Bridge Park</h1>
+        <h2>August 5th - 8th 2019</h2>
+        <h2>Free entry. Films for everyone!</h2>
+        <p>(double click carousel for trailers.)</p>  
+      </div>
+      <div id="ticketSvg" class="col-xs-12 col-sm-6 myfonts visibile pull-right fade-in">
+        <a href="#contactSection"><img src="img/ticket.svg"></a>
+        <p>Pre-register for your tickets now!</p>
+      </div>
+    </section>
+
+
+    <section class="row ml-section" id="infoSection">
+      <div class="container-fluid ml-fonts">
+        <div class="col-xs-12 tab-container">
+          <div class="tab ml-active" data-toggle="tab" href="#about">About</div>
+          <div class="tab" data-toggle="tab" href="#news">News</div>
+          <div class="tab" data-toggle="tab" href="#links">Links</div>
+        </div>
+        <div class="col-xs-12 tab-line"></div>
+        <div class="tab-content ml-tab-pane col-xs-12">
+
+          <div class="tab-pane fade container-fluid active in" id="about">
+            <div class="col-xxs-12 col-xs-5 col-sm-6 col-md-5 col-lg-4 mb-3">
+              <img src="img/park2.jpg">
+            </div>
+            <div class="col-xxs-12 col-xs-7 col-sm-6 col-md-7 col-lg-8 mb-1">
+              <p>Located at Pier 1 of Brooklyn Bridge Park, the Brooklyn Outdoor Film
+                Festival is set against the stunning panoramic views of lower Manhatten.</p>
+                <p>With a 40 foot giant screen, and room for 5000 people, come and
+                  soak up the atmosphere. We have a mix of films from some of the
+                  latest releases to classics, all suitable for the whole family —
+                  what better place to enjoy a warm summer evening.
+                </div>
+                <div class="col-xs-12 mb-0">
+                  Tickets are free, but please pre-register your place by clicking on the golden
+                  ticket above as the event is extremely popular!</p>
+                </div>
+              </div>
+
+              <div class="tab-pane fade container-fluid" id="news">
+                <div class="col-xs-12 bb-1 mb-3">
+                  <h2>Latest News!<h2>
+                  </div>
+                  <div class="col-xxs-12 col-xs-4 col-sm-4 col-md-3 col-lg-2 mb-3">
+                    <img src="img/stevenyeun.jpg">
+                  </div>
+                  <div class="col-xxs-12 col-xs-8 col-sm-8 col-md-9 col-lg-10 mb-1">
+                    <h2>Oct 24th 2018</h2>
+                    <p>We are thrilled to announce that Steven Yeun, best known as Glenn from <em>The Walking Dead</em>, will be
+                      opening the Brooklyn Outdoor Film Festival. Steven is a massive fan of independent films and will give
+                      a short opening address at 5.30pm on August 5th before we open with our first blockbuster movie, <em>Antman & the Wasp.</em></p>
+                    </div>
+                    <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+                    <div class="col-xxs-12 col-xs-8 col-sm-8 col-md-9 col-lg-10 mb-1">
+                      <h2>Nov 27th 2018</h2>
+                      <p>As never before seen, <em>Raiders of the Lost Ark</em> has been digitally remastered, clearer than ever, brighter visuals,
+                        crisper sound — don't miss this one time opportunity to see one of the greatest films ever made in all its amazing glory. Check out the trailer
+                        in the <a href="#filmsSection">films section</a> and book your tickets early to avoid disappointment!</p>
+                      </div>
+                      <div class="col-xxs-12 col-xs-4 col-sm-4 col-md-3 col-lg-2 mb-3">
+                        <img src="img/film2.jpg">
+                      </div>
+                      <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+                      <div class="col-xs-12 mb-1">
+                        <p>Check back here for all the latest announcements.<p>
+                        </div>
+                      </div>
+
+                      <div class="tab-pane fade container-fluid" id="links">
+                        <div class="col-xs-12 col-sm-6 mb-1">
+                          <p> Brooklyn Bridge Park is an 85-acre post-industrial waterfront site stretching 1.3 miles along Brooklyn’s East River edge. The site spans from Jay Street, north of the Manhattan Bridge, to Pier 6 and Atlantic Avenue in the south. The site is long and narrow with a crenulated edge formed by its reclaimed piers.
+                            The park, designed by Michael Van Valkenburgh Associates, Inc., includes Piers 1-6, Empire Fulton Ferry, John Street and Main Street. In addition, two historic properties, the Civil war-era Empire Stores and the Tobacco Warehouse, have been integrated into the park.</p>
+                            <p>Follow the link to find out more about <a href="https://www.brooklynbridgepark.org/" target="_blank">Brooklyn Bridge Park</a></p>
+                          </div>
+                          <div class="col-xs-12 col-sm-6 mb-1">
+                            <p>If you're interested in visiting other places in Brooklyn while you are at the film festival, the following links may be helpful.</p>
+                            <p>Find out what's new at <a href="http://www.brooklynohio.gov/en-US/city-news.aspx" target="_blank">City of Brroklyn News</a></p>
+                            <p>Visit Brooklyn's famous <a href="https://www.prospectpark.org/" target="_blank">Prospect Park</a></p>
+                            <p>Great art and experiences at <a href="https://www.brooklynmuseum.org/" target="_blank">Brooklyn Museum</a></p>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </section>
+
+
+                  <section class="row ml-section" id="filmsSection">
+                    <div class="container-fluid ml-fonts">
+                      <div class="col-xs-12 tab-container">
+                        <div class="tab myActive" data-toggle="tab" href="#films">Films</div>
+                        <div class="tab" data-toggle="tab" href="#aug5">Aug 5</div>
+                        <div class="tab" data-toggle="tab" href="#aug6">Aug 6</div>
+                        <div class="tab" data-toggle="tab" href="#aug7">Aug 7</div>
+                        <div class="tab" data-toggle="tab" href="#aug8">Aug 8</div>
+                      </div>
+                      <div class="col-xs-12 tab-line"></div>
+                      <div class="tab-content ml-tab-pane col-xs-12">
+                        <div class="tab-pane fade container-fluid active in" id="films">
+                          <div class="col-xs-12 mb-3">
+                            <p>We are showing some amazing movies, including classics and new releases. Just select a date above for details and showtimes, or click on a movie below for a trailer.</p>
+                          </div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film1.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film2.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film3.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film4.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film5.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film6.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film7.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film8.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film9.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film10.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film11.jpg"></div>
+                          <div class="col-xxs-4 col-xs-3 col-sm-3 col-md-2 movie-block text-center"><img src="img/film12.jpg"></div>
+                        </div>
+
+                        <div class="tab-pane fade container-fluid" id="aug5">
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film1.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>Ant Man & The Wasp</h2>
+                            <h3>Showtime: 6pm</h3>
+                            <p>Director: Peyton Reed  Rated: PG-13  Runtime: 118mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>As Scott Lang balances being both a Super Hero and a father, Hope van Dyne and Dr. Hank Pym present an urgent new mission that finds the Ant-Man fighting alongside The Wasp to uncover secrets from their past.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film2.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>Indiana Jones: Raiders of the Lost Ark</h2>
+                            <h3>Showtime: 8.10pm</h3>
+                            <p>Director: Steven Spielberg  Rated: PG  Runtime: 115mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>In 1938, after his father Professor Henry Jones, Sr. goes missing while pursuing the Holy Grail, Indiana Jones finds himself up against Adolf Hitler's Nazis again to stop them obtaining its powers.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film3.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>Teen Wolf</h2>
+                            <h3>Showtime: 10.20pm</h3>
+                            <p>Director: Rod Daniel  Rated: PG  Runtime: 91mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>Todd Howard is a struggling teenager. Nothing seems to be going very well for him, until he turns into a wolf.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+                        </div>
+
+                        <div class="tab-pane fade container-fluid" id="aug6">
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film4.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>Home Alone</h2>
+                            <h3>Showtime: 6pm</h3>
+                            <p>Director: Chris Columbus  Rated: PG  Runtime: 103mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>It is Christmas time and the McCallister family is preparing for a vacation in Paris, France. But the youngest in the family named Kevin got into a scuffle with his older brother Buzz and was sent to his room which is on the third floor of his house. Then, the next morning, while the rest of the family was in a rush to make it to the airport on time, they completely forgot about Kevin who now has the house all to himself. </p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film5.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>The Goonies</h2>
+                            <h3>Showtime: 7.50pm</h3>
+                            <p>Director: Richard Donner  Rated: PG  Runtime: 114mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>Mikey Walsh and Brandon Walsh are brothers whose family is preparing to move because developers want to build a golf course in the place of their neighborhood. But when Mikey stumbles upon a treasure map of the famed "One-Eyed" Willy's hidden fortune, Mikey, Brandon, and their friends, calling themselves The Goonies, set out on a quest to find the treasure in hopes of saving their neighborhood.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film6.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>Star Wars: The Force Awakens</h2>
+                            <h3>Showtime: 9.45pm</h3>
+                            <p>Director: J.J. Abrams  Rated: PG-13  Runtime: 136mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>30 years after the defeat of Darth Vader and the Empire, Rey, a scavenger from the planet Jakku, finds a BB-8 droid that knows the whereabouts of the long lost Luke Skywalker. Rey, as well as a rogue stormtrooper and two smugglers, are thrown into the middle of a battle between the Resistance and the daunting legions of the First Order.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+                        </div>
+
+                        <div class="tab-pane fade container-fluid" id="aug7">
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film7.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>Brave</h2>
+                            <h3>Showtime: 6pm</h3>
+                            <p>Directors: Mark Andrews, Brenda Chapman  Rated: PG  Runtime: 93mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>"Brave" features Merida, an aspiring archer and impetuous daughter of royalty. Merida makes a reckless choice that unleashes unintended peril and forces her to spring into action to set things right.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film8.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>Daddy Day Care</h2>
+                            <h3>Showtime: 7.45pm</h3>
+                            <p>Director: Steve Carr  Rated: PG  Runtime: 92mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>Mikey Walsh and Brandon Walsh are brothers whose family is preparing to move because developers want to build a golf course in the place of their neighborhood. But when Mikey stumbles upon a treasure map of the famed "One-Eyed" Willy's hidden fortune, Mikey, Brandon, and their friends, calling themselves The Goonies, set out on a quest to find the treasure in hopes of saving their neighborhood.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film9.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>The Hunger Games: Catching Fire</h2>
+                            <h3>Showtime: 9.30pm</h3>
+                            <p>Director: Francis Lawrence  Rated: PG-13  Runtime: 146mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>Twelve months after winning the 74th Hunger Games, Katniss Everdeen and her partner Peeta Mellark must go on what is known as the Victor's Tour, wherein they visit all the districts, but before leaving, Katniss is visited by President Snow who fears that Katniss defied him a year ago during the games when she chose to die with Peeta. With both Katniss and Peeta declared the winners, it is fueling a possible uprising. </p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+                        </div>
+
+                        <div class="tab-pane fade container-fluid" id="aug8">
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film10.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>The Incredibles 2</h2>
+                            <h3>Showtime: 6pm</h3>
+                            <p>Director: Brad Bird  Rated: PG  Runtime: 118mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>Mr. Incredible finds domestic life a daunting challenge, especially with baby Jack-Jack's newly emerged powers making him almost impossible to manage. However, Elastigirl soon has her own concerns dealing with the menace of a new supervillain, Screenslaver, who is wreaking havoc with his mind control abilities.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film11.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>Kung Fu Panda 3</h2>
+                            <h3>Showtime: 8pm</h3>
+                            <p>Directors: Alessandro Carloni, Jennifer Yuh Nelson  Rated: PG  Runtime: 95mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>When the supernatural villain Kai begins to sweep across China defeating all the kung fu masters, Po must do the impossible-learn to train a village full of his fun-loving, clumsy brethren to become the ultimate band of Kung Fu Pandas.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+
+                          <div class="col-xxs-6 col-xs-4 col-sm-3 col-md-2 mb-3">
+                            <img src="img/film12.jpg">
+                          </div>
+                          <div class="col-xxs-6 col-xs-8 col-sm-9 col-md-10 mb-1">
+                            <h2>Beauty and the Beast(2017)</h2>
+                            <h3>Showtime: 9.45pm</h3>
+                            <p>Director: Bill Condon  Rated: PG  Runtime: 129mins</p>
+                          </div>
+                          <div class="col-xxs-12 col-xs-8 col-sm-9 col-md-10 mb-3">
+                            <p>Disney's animated classic takes on a new form, with a widened mythology and an all-star cast. A young prince, imprisoned in the form of a beast, can be freed only by true love. What may be his only opportunity arrives when he meets Belle, the only human girl to ever visit the castle since it was enchanted.</p>
+                          </div>
+                          <div class="col-xs-12 bb-1 mb-3 clearfix"></div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </section>
+
+
+                  <section class="row ml-section" id="contactSection">
+                    <div class="container-fluid ml-fonts">
+                      <div class="col-xs-12 tab-container">
+                        <div class="tab ml-active" data-toggle="tab" href="#tickets">Tickets</div>
+                        <div class="tab" data-toggle="tab" href="#contact">Contact</div>
+
+                      </div>
+                      <div class="col-xs-12 tab-line"></div>
+                      <div class="tab-content ml-tab-pane col-xs-12">
+
+                        <div class="tab-pane fade container-fluid active in" id="tickets">
+                          <div class="col-xs-12 mb-1">
+                            <h3>Pre-register for tickets here!</h3>
+                            <form>
+                              <div class="form-group">
+                                <label for="YourName1">Full Name</label>
+                                <input type="text" class="form-control" id="YourName1" aria-describedby="nameHelp1" placeholder="Enter name" required>
+                                <small id="nameHelp1" class="form-text text-muted">Please enter your full name.</small>
+                              </div>
+                              <div class="form-group">
+                                <label for="YourEmail1">Email address</label>
+                                <input type="email" class="form-control" id="YourEmail1" aria-describedby="emailHelp1" placeholder="Enter email" required>
+                                <small id="emailHelp1" class="form-text text-muted">We'll never share your details with anyone else.</small>
+                              </div>
+                              <div class="form-group">
+                                <label for="movieSelect1" aria-describedby="movieHelp1">Which movie do you want to see?</label>
+                                <select class="form-control" id="movieSelect1">
+                                  <option>Antman & the Wasp</option>
+                                  <option>Raiders of the Lost Ark (remastered)</option>
+                                  <option>Teen Wolf</option>
+                                  <option>Home Alone</option>
+                                  <option>The Goonies</option>
+                                  <option>Star Wars: The Force Awakens</option>
+                                  <option>Disney's Brave</option>
+                                  <option>Daddy Day Care</option>
+                                  <option>The Hunger Games: Catching Fire</option>
+                                  <option>The Incredibles 2</option>
+                                  <option>Kung Fu Panda 3</option>
+                                  <option>Beauty and the Beast (2017)</option>
+                                </select>
+                              </div>
+                              <div class="form-group">
+                                <label for="TicketSelect1" aria-describedby="ticketsHelp1">Number of tickets</label>
+                                <select class="form-control" id="TicketSelect1">
+                                  <option>1</option>
+                                  <option>2</option>
+                                  <option>3</option>
+                                  <option>4</option>
+                                  <option>5</option>
+                                  <option>6</option>
+                                </select>
+                                <small id="ticketsHelp1" class="form-text text-muted">For groups larger than 6, please call the ticket line on 800-755-2222.</small>
+                              </div>
+                              <button type="submit" class="btn btn-primary .btn-lg btn-block">Make Booking</button>
+                              <br><br>
+                            </form>
+
+                          </div>
+
+                        </div>
+
+                        <div class="tab-pane fade container-fluid" id="contact">
+                          <div class="col-xs-12 mb-1">
+                            <h3>Contact us.</h3>
+
+                            <form>
+                              <div class="form-group">
+                                <label for="YourName2">Full Name</label>
+                                <input type="text" class="form-control" id="YourName2" aria-describedby="nameHelp2" placeholder="Enter name" required>
+                                <small id="nameHelp2" class="form-text text-muted">Please enter your full name.</small>
+                              </div>
+                              <div class="form-group">
+                                <label for="YourEmail2">Email address</label>
+                                <input type="email" class="form-control" id="YourEmail2" aria-describedby="emailHelp2" placeholder="Enter email" required>
+                                <small id="emailHelp2" class="form-text text-muted">We'll never share your details with anyone else.</small>
+                              </div>
+                              <div class="form-group">
+                                <label for="TextArea2">Message</label>
+                                <textarea class="form-control" id="TextArea2" rows="3"></textarea>
+                              </div>
+                              <button type="submit" class="btn btn-primary .btn-lg btn-block">Submit</button>
+                              <br><br>
+                            </form>
+
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+                  </section>
+
+
+                </div>
+                <!-- end of main content container-->
+                <section class="text-center social-media-bar">
+                  <a href="https://www.facebook.com/" target="_blank" class="fa fa-facebook"></a>
+                  <a href="https://twitter.com/" target="_blank" class="fa fa-twitter"></a>
+                  <a href="https://www.linkedin.com/" target="_blank" class="fa fa-linkedin"></a>
+                  <a href="https://www.youtube.com/" target="_blank" class="fa fa-youtube"></a>
+                  <a href="https://www.instagram.com/" target="_blank" class="fa fa-instagram"></a>
+                </section>
+                <footer class="container-fluid text-center ml-footer">
+                  <div class="col-xs-12 text-center ml-fonts">
+                    <p>The Brooklyn Outdoor Film Festival is sponsored by</p>
+                  </div>
+                  <div class="col-xs-12 text-center sponsors">
+                    <img src="img/nyfa.svg">
+                    <img src="img/3m.svg">
+                    <img src="img/canon.svg">
+                    <img src="img/afi.svg">
+                    <img src="img/oc.svg">
+                  </div>
+                  <div class="col-xs-12 text-center ml-fonts">
+                    <p>&copy 2018 Brooklyn Vibes Events Co. 228 Duffield St, Brooklyn, NY 11201, USA</p>
+                  </div>
+                </footer>
+                <!-- Trialers hidden from view-->
+                <div class="film-trailer ml-fonts">
+                  <div class="trailer-box">
+                    <iframe class="trailer-frame" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen><img src="img/ticket.svg"></iframe>
+                    <div class="trailer-ticket text-center"><span>Book your </span><a href="#contactSection"><img class="ticket-click" src="img/ticket.svg"></a><span> ticket now!</span></div>
+                  </div>
+                </div>
+                <script src = "js/tabcontrol.js"></script>
+                <script src = "js/brooklyn.js"></script>
+
+              </body>
+              </html>
