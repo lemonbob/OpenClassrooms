@@ -2,7 +2,7 @@
 
 (In addition the the stated assignment, a custom carousel was designed and coded to emulate a 3d film reel.) 
 
-Find the live site at
+Find the live site at:
 
 http://boff.polymathicdesign.com
 
