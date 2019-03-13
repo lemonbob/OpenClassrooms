@@ -1,0 +1,685 @@
+/*Brooklyn CSS*/
+
+/*css reset add box-sizing border-box to all elements*/
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  background: transparent;
+  box-sizing: border-box;
+}
+
+body{
+  background-color:rgb(2,0,69);
+  background-image:url("../img/bg2.jpg");
+  background-attachment: fixed;
+  overflow-x:hidden;
+}
+
+#mlNavBar{
+  font-size: 1.2em;
+  color:#fff;
+  background-color:rgb(2,0,69);
+  border-color:rgb(2,0,69);
+  font-weight: 900;
+  border-radius:0;
+  margin-bottom:0;
+}
+
+#mlNavBar a{
+  color:#fff;
+  padding: 15px 10px;
+}
+
+#mlNavBar a:hover {
+  color:#aaf;
+  background-color: rgba(255,255,255,0.1);
+}
+
+.ml-nav-class{
+  border-radius:0;
+  margin-bottom:0;
+  background-color:rgb(2,0,69);
+  border-color:rgb(2,0,69);
+  border:0px;
+}
+
+.ml-nav-class .ml-brand{
+  padding-top:15px;
+  padding-bottom:15px;
+  font-size:1.2em;
+  font-variant: normal;
+  color:#fff;
+}
+
+.ml-nav-class .ml-brand:hover{
+  color:#aaf;
+}
+
+.ml-drop-down{
+  background-color:rgb(2,0,69);
+  opacity:0.8;
+  color:#fff;
+  border:0px;
+}
+
+#mlNavBar li.open{
+  background-color:rgba(255,255,255,0.1);
+}
+
+#mlNavBar .open>a{
+  background-color:rgba(255,255,255,0.1);
+}
+
+#main_banner{
+  position:relative;
+  display:block;
+  height:500px;
+  width:100%;
+  background-image: url("../img/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: left;
+  overflow:hidden;
+  padding:60px 20px;
+  margin-bottom:20px;
+}
+
+#ticketSvg{
+  position:relative;
+  text-align:right;
+  margin-top:-100px;
+}
+
+#ticketSvg img{
+  max-width:323px;
+  width:100%;
+  filter:drop-shadow(0px 0px 0px #fc0);
+  transition: filter 0.3s ease-in-out;
+}
+
+#ticketSvg img:hover{
+  filter:drop-shadow(0px 0px 10px #fc0);
+  cursor: pointer;
+}
+
+
+#brooklyn{
+  position:relative;
+  display:inline-block;
+  float:left;
+  width:401px;
+  filter:drop-shadow(0px 20px 20px #000);
+}
+
+#brooklyn p{
+  visibility:hidden;
+}
+/*carousel styles*/
+#mlCarousel, #carouselControls{
+  position:absolute;
+  display:block;
+  top:0px;
+  left:400px;
+  width:388px;
+  height:100%;
+}
+
+#mlCarousel{
+perspective:1000px;
+}
+
+.film{
+  position:absolute;
+  display:block;
+  width:100%;
+  opacity:0;
+  visibility:visible;
+  pointer-events: none;
+}
+/*
+.filmLink{
+box-shadow:0 0 0px #66e;
+}
+
+.filmLink:hover{
+box-shadow:0 0 20px #aaf;
+}
+*/
+
+.film-controls{
+  position:absolute;
+  width:30px;
+  height:30px;
+  left:45%;
+  top:2px;
+  display:block;
+  background-color:rgba(245,245,245,1);
+  border-radius: 50%;
+  border:1px rgba(2,0,69,0.7) solid;
+  padding:5px;
+  opacity:0;
+  transition:opacity 0.3s ease-in-out;
+}
+
+#carouselControls .film-controls:last-of-type{
+  top:auto;
+  bottom:2px;
+  transform:rotate(180deg);
+}
+/* end of carousel*/
+
+.ml-fonts{
+  font-family: 'Quicksand', sans-serif;
+  font-size:1em;
+  font-weight: 900;
+  color:#fff;
+}
+
+.ml-fonts h1, h2, h3{
+  font-weight: 900;
+  margin-top:0px;
+}
+
+#headerInfo{
+  position:relative;
+  display:inline-block;
+  float:left;
+  left:400px;
+}
+
+.fade-in{
+  opacity:0;
+  animation:fadeIn 2s ease-in-out forwards;
+}
+
+.fade-in-fast{
+  opacity:0;
+  animation:fadeIn 0.5s ease-in-out forwards;
+}
+
+.right-fade{
+  animation:rightfade 1s ease-in-out 2s forwards;
+  opacity:0;
+}
+
+.ml-section{
+  margin-top:-40px;
+  padding-top:40px;
+  margin-bottom:60px;
+}
+
+.movie-block{
+  padding:0px;
+  overflow:hidden;
+}
+
+.movie-block::after{
+  content:"Click for trailer";
+  position:absolute;
+  display:block;
+  width:100%;
+  height:100%;
+  top:100%;
+  left:0;
+  color:#fff;
+  background-color: #000;
+  padding-top:50%;
+  padding-left:10%;
+  padding-right:10%;
+  opacity:0.7;
+  transition:top 0.7s ease-in-out 0.5s;
+}
+
+.movie-block:hover::after{
+  top:0;
+}
+
+.tab-container{
+  width:100%;
+  padding:20px 0 0 0;
+  border:0px;
+  margin:0px;
+  overflow: hidden;
+}
+
+.tab{
+  position:relative;
+  float:left;
+  padding:5px 15px 0px 15px;
+  margin:0px 0px -60px 0px;
+  border-radius:10px 10px 0px 0px;
+  background-color:rgb(0,53,128);
+  color:#fff;
+  box-shadow: 0 0 7px #000;
+  font-size:1.3em;
+  height:100px;
+  top:0px;
+  transform:translateY(0px);
+  transition:transform 0.2s ease-in-out;
+}
+
+.tab:hover{
+  transform:translateY(-10px);
+}
+
+.tab-line{
+  width:100%;
+  height:7px;
+  background-color:rgb(0,83,158);
+}
+
+.ml-tab-pane{
+  padding:20px 0px 0px 0px;
+  background-color:rgb(245,245,245);
+  color:#000;
+  font-variant: normal;
+  border-radius:0;
+  border-bottom:7px rgb(0,83,158) solid;
+  height:100%;
+}
+
+.ml-tab-pane img{
+  width:100%;
+  height:auto;
+}
+
+.ml-active{
+  background-color:rgb(0,83,158);
+  transform:translateY(-10px);
+}
+
+.tab-pane{
+  transform:translateX(-20px);
+}
+
+.fade {
+  transition:opacity 0.7s ease-in-out,transform 0.7s ease-in-out;
+}
+
+.fade.in{
+  opacity:1;
+  transform:translateX(0px);
+}
+
+@keyframes rightfade{
+  0%{opacity:0;right:-323px;}
+  100%{opacity:1;right:0px;}
+}
+
+@keyframes fadeIn{
+  0%{opacity:0;}
+  100%{opacity:1;}
+}
+
+.col-xxs-1,.col-xxs-2,.col-xxs-3,.col-xxs-4,.col-xxs-5,.col-xxs-6,.col-xxs-7
+,.col-xxs-8,.col-xxs-9,.col-xxs-10,.col-xxs-11,.col-xxs-12{
+  min-width:1px;
+  float:left;
+}
+
+.fa {
+  padding: 20px;
+  font-size: 20px !important;
+  width: 20px !important;
+  text-align: center;
+  text-decoration: none;
+  margin: 5px 5px;
+  border-radius: 50%;
+  box-sizing: content-box;
+  opacity:0.9;
+}
+
+.fa:hover {
+  opacity: 0.7;
+  text-decoration: none;
+}
+
+.social-media-bar{
+  margin:60px 0px 0px 0px;
+  background-color:rgb(0,53,128);
+  opacity:0.8;
+  padding:20px;
+}
+
+.ml-footer{
+  background-color:rgb(2,0,69);
+  opacity:0.8;
+  padding-top:20px;
+  padding-bottom:80px;
+}
+
+.sponsors{
+  margin:0px 0px;
+  height:auto;
+}
+
+.sponsors img{
+  margin:20px 20px;
+  opacity:0.7;
+  width:10%;
+}
+
+.film-trailer{
+  position:fixed;
+  display:none;
+  visibility:hidden;
+  align-items: center;
+  justify-content: center;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  background-color:rgba(0,0,0,0.95);
+  opacity:0;
+  transition:opacity 0.5s ease-in-out;
+}
+
+.trailer-box{
+  width:90vw;
+  height:calc(50.625vw + 12.5vh);
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+}
+
+.trailer-frame{
+  width:100%;
+  height:100%;
+  max-width:1280px;
+  max-height:720px;
+  box-shadow:0px 0px 50px rgb(93,54,151);
+  filter:drop-shadow(0px 0px 80px rgb(0,38,128));
+}
+
+.trailer-ticket{
+  width:100%;
+}
+
+.ticket-click{
+  height:12.5vh;
+  filter:drop-shadow(0px 0px 0px #fc0);
+  transition: filter 0.3s ease-in-out;
+}
+
+.ticket-click:hover{
+  filter:drop-shadow(0px 0px 10px #fc0);
+}
+
+
+@media (min-aspect-ratio: 17/10){
+  .trailer-box{
+    width:67.5555vw;
+    height:calc(38vw + 12.5vh);
+  }
+}
+
+@media screen and (max-width:1199px){
+  #ticketSvg{
+    margin-top:0px;
+  }
+}
+
+@media screen and (max-width:767px){
+  #brooklyn{
+    width:120px;
+  }
+  #brooklyn p{
+    visibility:visible;
+  }
+  #main_banner{
+    height:300px;
+    padding:20px 20px;
+  }
+  #mlCarousel, #carouselControls{
+    left:185px;
+    width:250px;
+  }
+
+  .ml-fonts{
+    font-size: 0.8em;
+  }
+  .ml-fonts h1{
+    font-size: 1.5em;
+  }
+  .ml-fonts h2{
+    font-size: 1.3em;
+  }
+  .ml-fonts h3{
+    font-size: 1.3em;
+  }
+  #ticketSvg{
+    text-align:center;
+  }
+  #ticketSvg img{
+    max-width:200px;
+  }
+
+  .ml-nav-class .ml-brand{
+    padding-top:15px;
+  }
+
+  .sponsors img{
+    width:15%;
+  }
+}
+
+
+@media screen and (max-width:415px){
+  #mlCarousel, #carouselControls{
+    left:auto;
+    right:0px;
+    width:250px;
+  }
+  .tab{
+    padding:5px 10px 0px 10px;
+    font-size:1em;
+    margin:0px 0px -70px 0px;
+  }
+
+  .sponsors img{
+    width:20%;
+  }
+  .col-xxs-12{
+    width:100%;
+    float:left;
+  }
+  .col-xxs-11{
+    width:91.6666%;
+    float:left;
+  }
+  .col-xxs-10{
+    width:83.3333%;
+    float:left;
+  }
+  .col-xxs-9{
+    width:75%;
+    float:left;
+  }
+  .col-xxs-8{
+    width:66.6666%;
+    float:left;
+  }
+  .col-xxs-7{
+    width:58.3333%;
+    float:left;
+  }
+  .col-xxs-6{
+    width:50%;
+    float:left;
+  }
+  .col-xxs-5{
+    width:41.6666%;
+    float:left;
+  }
+  .col-xxs-4{
+    width:33.3333%;
+    float:left;
+  }
+  .col-xxs-3{
+    width:25%;
+    float:left;
+  }
+  .col-xxs-2{
+    width:16.6666%;
+    float:left;
+  }
+  .col-xxs-1{
+    width:8.3333%;
+    float:left;
+  }
+}
+
+@media screen and (max-width:359px){
+  #mlCarousel, #carouselControls{
+    width:220px;
+    right:-20px;
+  }
+}
+
+.mb-0{
+  margin-bottom:0 !important;
+}
+
+.mb-1{
+  margin-bottom:.25em !important;
+}
+
+.mb-2{
+  margin-bottom:.5em !important;
+}
+
+.mb-3{
+  margin-bottom:1em !important;
+}
+
+.mb-4{
+  margin-bottom:1.5em !important;
+}
+
+.mb-5{
+  margin-bottom:3em !important;
+}
+
+.bb-1{
+  border-bottom:1px #ccc solid;
+}
+
+.fa-facebook {
+  /*background: #3B5998;*/
+  background-color:rgb(2,0,69);
+  color: white;
+}
+
+.fa-twitter {
+  /*background: #55ACEE;*/
+  background-color:rgb(2,0,69);
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  /*background: #007bb5;*/
+  background-color:rgb(2,0,69);
+  color: white;
+}
+
+.fa-youtube {
+  /*background: #bb0000;*/
+  background-color:rgb(2,0,69);
+  color: white;
+}
+
+.fa-instagram {
+  /*background: #125688;*/
+  background-color:rgb(2,0,69);
+  color: white;
+}
+
+.fa-pinterest {
+  background: #cb2027;
+  color: white;
+}
+
+.fa-snapchat-ghost {
+  background: #fffc00;
+  color: white;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.fa-skype {
+  background: #00aff0;
+  color: white;
+}
+
+.fa-android {
+  background: #a4c639;
+  color: white;
+}
+
+.fa-dribbble {
+  background: #ea4c89;
+  color: white;
+}
+
+.fa-vimeo {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-tumblr {
+  background: #2c4762;
+  color: white;
+}
+
+.fa-vine {
+  background: #00b489;
+  color: white;
+}
+
+.fa-foursquare {
+  background: #45bbff;
+  color: white;
+}
+
+.fa-stumbleupon {
+  background: #eb4924;
+  color: white;
+}
+
+.fa-flickr {
+  background: #f40083;
+  color: white;
+}
+
+.fa-yahoo {
+  background: #430297;
+  color: white;
+}
+
+.fa-soundcloud {
+  background: #ff5500;
+  color: white;
+}
+
+.fa-reddit {
+  background: #ff5700;
+  color: white;
+}
+
+.fa-rss {
+  background: #ff6600;
+  color: white;
+}
+
+.test-border{
+  border: 1px red solid;
+}
