@@ -68,11 +68,13 @@ Q&A: 10 minutes
 The validator will stop playing the client for 5 minutes towards the end so that you can do a debrief together.
 
 **Submit**
+
 A project brief explaining your client's needs, including an explanation of the technologies you chose and why
 Your HTML and CSS source code (plus other files if necessary)
 Note: if you started this project before July 18th, there were no budget nor capacity requirements for the project. Feel free to continue without integrating them. 
 
 **Skills**
+
 Write a project brief
 Choose an appropriate technical solution
 Detail project specifications
