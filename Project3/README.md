@@ -1,6 +1,10 @@
 # Project 3 - Film Festival Website
 
-(In addition the the stated assignment, a custom carousel was designed and coded to emulate a 3d film reel.)  
+(In addition the the stated assignment, a custom carousel was designed and coded to emulate a 3d film reel.) 
+
+Find the live site at
+
+http://boff.polymathicdesign.com
 
 **Assignment**
 
