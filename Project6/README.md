@@ -1,6 +1,6 @@
 # Project 6 [cyborgarena.polymathicdesign.com](http://cyborgarena.polymathicdesign.com)
 
-## Demonstrates custom easing animations in HTML Canvas API 
+**This project demonstrates custom easing animations in HTML Canvas API** 
 
 >In this project, you will create an online game written JavaScript in which 2 players play each turn to compete. 
 
