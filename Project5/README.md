@@ -1,12 +1,16 @@
-# Project 5 
+# Project 5 (http://roboquote.polymathicdesign.com)
 
-OpenClassrooms Front-end Developer Course: code a random quotation generator.
+**This project demonstrats responsive design, custom calls to an external API, basic and advance logic for parsing sentences.**
 
-This project was specially designed for those new to the JavaScript programming and algorithms. Your objective will be both simple and fun: you will build a random quote generator! The quotes will be randomly constructed by assembling different pieces of a sentence.
+>OpenClassrooms Front-end Developer Course: code a random quotation generator.
+>
+>You will build a random quote generator! The quotes will be randomly constructed by assembling different pieces of a sentence.
 
 Create a quotation generator full of random words!
 Create a quotation generator!
-Step 1: Random quotes
+
+**Step 1: Random quotes**
+
 There are plenty of text generators online. Google "quote generator," and you will find many sites that randomly generate quotes by assembling sentence fragments.
 
 Your turn to create one! You must respect the following criteria:
@@ -23,7 +27,8 @@ Files to provide:
 
 A JavaScript file of your code
 
-Step 2: More customized quotes
+**Step 2: More customized quotes**
+
 You now want to go further and offer the following options:
 
 Select the number of quotes generated (between 1 and 5)
@@ -34,11 +39,12 @@ Once the quotes are generated, have the program generate new quotes or quit the 
 
 Adapt the program so that it has these features!
 
-Files to provide:
+**Files to provide:**
 
 A JavaScript file of your code
 
 Presentation
+
 You'll do an oral presentation of your project with a validator in order to simulate real-life conditions. 
 
 The presentation will be structured as follows:  
@@ -47,6 +53,7 @@ Presentation of your code and your quotation generator: 15-20 minutes
 Q&A: 10 minutes
 Towards the end of the presentation, the mentor will debrief you for approximately 5 minutes.
 
-Skills
+**Skills**
+
 Design an algorithm to meet a specification
 Implement the JavaScript syntax in a program
