@@ -124,7 +124,6 @@ Atomic.setInfoData = function(){
 			rReviewList[0] = {comment:"no reviews", stars:"no reviews"};
 			rVisible = "block";
 		}
-		//Atomic.infoData.push(<DataItem key={"review"+i} restName={rName} restAddr={rAddr} restRating={rRating} restReviewList={rReviewList} display={rVisible} index={i}></DataItem>);
 		Atomic.infoData.push({key:"review"+rIndex, restName:rName, restAddr:rAddr, restRating:rRating, restReviewList:rReviewList, display:rVisible, index:rIndex});
 		Atomic.addMapMarker(Atomic.restaurantDataStore[i].lat, Atomic.restaurantDataStore[i].lng, rVisible, 'src/img/ricon_sml.png');
 	}
@@ -137,7 +136,6 @@ Atomic.setInfoData = function(){
 		let rIndex = i+Atomic.restaurantDataStore.length;
 		if (rRating !== "no reviews" && rRating >= Atomic.filterLow && rRating <= Atomic.filterHigh){rVisible = "block";}else{rVisible = "none";};
 		if (rRating === "no reviews"){rVisible = "block";}
-		//Atomic.infoData.push(<DataItem key={"review"+rIndex} restName={rName} restAddr={rAddr} restRating={rRating} restReviewList={rReviewList} display={rVisible} index={rIndex}></DataItem>);
 		Atomic.infoData.push({key:"review"+rIndex, restName:rName, restAddr:rAddr, restRating:rRating, restReviewList:rReviewList, display:rVisible, index:rIndex});
 		Atomic.addMapMarker(Atomic.googleRestaurantData[i].geometry.location.lat(), Atomic.googleRestaurantData[i].geometry.location.lng(), rVisible, 'src/img/ricon_sml2.png');
 	}
@@ -179,7 +177,6 @@ Atomic.setGoogleRestarauntReviewList = function(index, place_id){
 			if (rRating >= Atomic.filterLow && rRating <= Atomic.filterHigh){rVisible = "block";}else{rVisible = "none";};
 		}
 		Atomic.googleRestaurantData[index].rReviewList = rReviewList;
-		//Atomic.infoData[rIndex] = (<DataItem key={"review"+rIndex} restName={rName} restAddr={rAddr} restRating={rRating} restReviewList={rReviewList} display={rVisible} index={rIndex}></DataItem>);
 		Atomic.infoData[rIndex] = {key:"review"+rIndex, restName:rName, restAddr:rAddr, restRating:rRating, restReviewList:rReviewList, display:rVisible, index:rIndex};
 		Atomic.InfoPanel().forceUpdate();
 	});
