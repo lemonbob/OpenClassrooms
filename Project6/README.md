@@ -5,6 +5,7 @@
 >In this project, you will create an online game written JavaScript in which 2 players play each turn to compete. 
 
 **Game overview**
+
 Step 1: Generate the map
 Start by randomly generating the game map. Each box can be either:
 
@@ -16,7 +17,7 @@ On the map, a limited number of weapons (up to 4) will be placed randomly and ca
 You should invent at least 4 types of weapons in the game, each with different damage inflicted (don't worry though, your choice of weapons doesn't need to be violent or come from the classic lineup of weapons. If you count a cupcake as a weapon, that's cool too)! The default weapon which team players must inflict 10 points of damage. Each weapon has a name and associated visual.
 The placement of the two players is also randomly on the map when the game loads. They should not touch (they can not be together).
 
-Files to provide:
+**Files to provide:**
 
 •	HTML / CSS / JS files
 
@@ -24,7 +25,7 @@ Step 2: Movements
 For each turn, a player can move from one to three boxes (horizontally or vertically) before ending their turn. They obviously can not pass through obstacles directly.
 If a player passes over a box containing a weapon, they leave their current weapon on site and replace it with the new one.
 
-Files to provide:
+**Files to provide:**
 
 •	HTML / CSS / JS files
 
@@ -55,7 +56,7 @@ The presentation will be structured as follows:
 
 Towards the end of the presentation, the mentor will debrief you for approximately 5 minutes.
 
-Skills
+**Skills**
 
 •  Design reusable JavaScript application architecture
 
