@@ -1,6 +1,6 @@
 # Project 5 [roboquote.polymathicdesign.com](http://roboquote.polymathicdesign.com)
 
-**This project demonstrats responsive design, custom calls to an external API, basic and advance logic for parsing sentences.**
+**This project demonstrats responsive design, custom calls to an external API, and basic and advance logic for parsing sentences.**
 
 >OpenClassrooms Front-end Developer Course: code a random quotation generator.
 >
