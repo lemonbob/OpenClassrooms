@@ -1,8 +1,10 @@
 # Project 6 [cyborgarena.polymathicdesign.com](http://cyborgarena.polymathicdesign.com)
 
-In this project, you will create an online game written JavaScript in which 2 players play each turn to compete. 
+## Demonstrates custom easing animations in HTML Canvas API 
 
- Game overview
+>In this project, you will create an online game written JavaScript in which 2 players play each turn to compete. 
+
+**Game overview**
 Step 1: Generate the map
 Start by randomly generating the game map. Each box can be either:
 
