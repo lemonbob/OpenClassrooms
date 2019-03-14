@@ -1,6 +1,6 @@
 # UML Project
 
-**This project demostrates UML, MySQL, and Database design skills in phpMyAdmin.** 
+**This project demostrates UML, MySQL, and database design skills in phpMyAdmin.** 
 
 >Design a database structure for a fast food delivery business "ExpressFood"
 
