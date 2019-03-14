@@ -269,6 +269,7 @@ class StreetMapData extends React.Component {
 		}
 	}
 	render(){
+			let object = Atomic.infoData[this.state.markerData.mNum];
 		if (this.state.markerData.mNum !== -1){
 			return(
 				<div id="popupInfo">
@@ -280,7 +281,9 @@ class StreetMapData extends React.Component {
 				<ReviewForm swData={this.state.markerData}></ReviewForm>
 				<NewRestaurantForm swData={this.state.markerData}></NewRestaurantForm>
 				<img src={this.state.markerData.url}></img>
-				<div>{Atomic.infoData[this.state.markerData.mNum]}</div>
+				<div>
+				{<DataItem key={object.key} restName={object.restName} restAddr={object.restAddr} restRating={object.restRating} restReviewList={object.restReviewList} display={object.display} index={object.index}></DataItem>}
+				</div>
 				</div>
 				</div>
 			);
