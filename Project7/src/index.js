@@ -304,7 +304,6 @@ class GoogleMap extends React.Component {
 		};
 		Atomic.GoogleMap = () => this;
 	}
-	//markerData:{mNum:-1,url:"",lat:0, lng:0, addRest:false},
 	addRestaurantMarker(e){
 		if (this.state.mouseDrop === true){
 			let pos,newMarker,markerData,markerNum,url;
@@ -337,7 +336,6 @@ class GoogleMap extends React.Component {
 	locationError(err){
 		console.warn(`ERROR(${err.code}): ${err.message}`);
 	};
-	//nodisplayMap(){console.log("GoogleMaps API not loaded");};
 	componentDidMount(){
 		Atomic.location = {lat:50.720932, lng:-1.903761};
 		Atomic.map = new google.maps.Map(document.getElementById('map'), {zoom: 17, center: Atomic.location});
@@ -347,7 +345,6 @@ class GoogleMap extends React.Component {
 		this.getLocation();
 	};
 	render(){
-		//return (<div id="mapWrapper"><div id="map"></div><StreetMapData swData={this.state.markerData}></StreetMapData></div>);
 		return (<div id="mapWrapper"><div id="map"></div></div>);
 	}
 }
@@ -448,8 +445,9 @@ class DataItem extends React.Component {
 		super(props);
 		this.state = {
 			height:"0px",
-			display:"block",
-			opacity:0
+			display:"none",
+			opacity:0,
+			childNode:0
 		};
 	}
 	toggleList(){
@@ -457,9 +455,9 @@ class DataItem extends React.Component {
 			if (timeoutCall !== 0){clearTimeout(timeoutCall);timeoutCall = 0;}
 			if (this.state.display !== "block"){
 				this.setState({display:"block"});
-				setTimeout(() => this.setState({height:"500px", opacity:1,}),50);
+				setTimeout(() => this.setState({height:this.state.childNode.scrollHeight, opacity:1,}),50);
 			}else{
-				this.setState({height:"500px", opacity:1,});
+				this.setState({height:this.state.childNode.scrollHeight, opacity:1,});
 			}
 		}
 		else {
@@ -467,6 +465,10 @@ class DataItem extends React.Component {
 			timeoutCall = setTimeout(() => this.setState({display:"none"}),800);
 		}
 	};
+	componentDidMount(){
+	let childNode = ReactDOM.findDOMNode(this).querySelector(".data-reviews");
+	this.setState({childNode:childNode});
+	}
 	bounceMapMarker(){
 		Atomic.marker[this.props.index+1].setAnimation(google.maps.Animation.BOUNCE);
 		setTimeout(() => this.stopBounce(), 7000);
@@ -477,8 +479,6 @@ class DataItem extends React.Component {
 	}
 	render(){
 		let dataItemStyle = {display:this.props.display};
-		//if (this.props.restRating !== "no reviews" && this.props.restRating>=Atomic.filterLow && this.props.restRating<=Atomic.filterHigh){dataItemStyle = {display:"block"}};
-		//if (this.props.restRating === "no reviews"){display:"block"};
 		let dataButtonStyle = {display:"block"};
 		let featureStyle = {backgroundImage:"linear-gradient(135deg,rgba(255,101,255,0.3), rgba(8,8,158,0.3))"};
 		let featureText = "Google Places...";
@@ -570,11 +570,12 @@ class InfoPanel extends React.Component {
 			<input className="filter-range" style={normalStyle} type="range" name="filterRange" min="1" max="50"/>
 			<button  className="data-button" style={buttonStyle} onClick={() => this.filterRatings("high")}>Filter {">"}</button>
 			</div>
-			<div style={normalStyle}>{Atomic.infoData}</div>
+			<div style={normalStyle}>{Atomic.infoData.map((object) => <DataItem key={object.key} restName={object.restName} restAddr={object.restAddr} restRating={object.restRating} restReviewList={object.restReviewList} display={object.display} index={object.index}></DataItem>)}</div>
 			</div>
 		);
 	}
 }
+//<div style={normalStyle}>{Atomic.infoData}</div>
 //export default InfoPanel;
 ////////////////////////////////////////////////////////////////////////////////
 
