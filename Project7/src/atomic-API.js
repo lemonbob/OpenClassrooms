@@ -29,7 +29,7 @@ Atomic.marker = [];
 Atomic.map = 0;
 Atomic.location = {};
 Atomic.place = {};
-Atomic.mapsAPIkey = "key=AIzaSyAS3g-JFzP1bv-xezck-dNFwEu1jQzKZDQ"
+Atomic.mapsAPIkey = "key=YOUAPIKEY"
 Atomic.autocomplete = 0;
 Atomic.placeSearch = 0;
 Atomic.filterLow = 0;
