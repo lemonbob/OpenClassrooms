@@ -575,7 +575,6 @@ class InfoPanel extends React.Component {
 		);
 	}
 }
-//<div style={normalStyle}>{Atomic.infoData}</div>
 //export default InfoPanel;
 ////////////////////////////////////////////////////////////////////////////////
 
