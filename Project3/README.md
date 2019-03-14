@@ -1,10 +1,7 @@
-# Project 3 - Film Festival Website
+# Project 3 - Film Festival Website [boff.polymathicdesign.com](http://boff.polymathicdesign.com)
 
-(In addition the the stated assignment, a custom carousel was designed and coded to emulate a 3d film reel.) 
+**In addition to Bootstrap, this project demonstrates a custom carousel coded in Javascript to emulate a 3D film reel.** 
 
-Find the live site at:
-
-http://boff.polymathicdesign.com
 
 **Assignment**
 
