@@ -40,20 +40,20 @@ Simply put, you'll need to write documentation that describes the project, how i
 
 ## Submit
 
-•	The updated code base with bugs fixed and tests written
-•	Documentation about the project, including your audit writeup, whether it's a wiki on Github, a text document, or something else
+•	The updated code base with bugs fixed and tests written.
+•	Documentation about the project, including your audit writeup, whether it's a wiki on Github, a text document, or something else.
 
 ## Presentation
 
 You'll do an oral presentation of your project with a validator in order to simulate real-life conditions.
 The presentation will be structured as follows:
-•	Presentation of your code, tests, and optimizations: 15-20 minutes
-•	Q&A: 10 minutes
+•	Presentation of your code, tests, and optimizations: 15-20 minutes.
+•	Q&A: 10 minutes.
 Towards the end of the presentation, the mentor will debrief you for approximately 5 minutes.
 
 ## Skills
 
-•  Optimize the performance of a project using DevTools
-•  Implement unit and functional tests in a web application
-•  Take over an existing JavaScript project
+•  Optimize the performance of a project using DevTools.
+•  Implement unit and functional tests in a web application.
+•  Take over an existing JavaScript project.
 
