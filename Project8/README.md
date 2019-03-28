@@ -27,13 +27,13 @@ More specifically, they're on lines #62, #86, #90, #137, #141, #146, #150, #156,
 You can go further and other tests if you see fit!
 Hint: Save yourself time and get the job done more quickly by adopting a TDD approach. Like all the top developers, if you write tests and fix bugs simultaneously, you can use the tests to identify what’s broken, which makes the bug fixing faster.
 
-##Step 3: Analyze performance
+## Step 3: Analyze performance
 
 The owners of the project have asked you to analyze the performance of a competitor site in order to identify what works well and what doesn't, if someday you decide to scale the app. Here's the competitor site.
 Use your browser's developer tools to analyze this website's performance. Pay attention to the resources used by certain elements of the site, what's slow vs. what's not, etc. You should pay attention to the resources used by advertisements on the site and to the resources used to perform to-do functionalities in the list itself.
 You'll then write an audit performance document that consists of some written text about the competitor's performance, how it differs from your own app, and how to optimize performance when scaling your own app up someday. This should be approximately 300-500 words long and as quantitative as possible.
 
-##Step 4: Write technical documentation
+## Step 4: Write technical documentation
 
 Now that you know the codebase by heart, take your audit document and add some more information to it. It's time to write technical documentation! Take some of these great examples as inspiration.
 Simply put, you'll need to write documentation that describes the project, how it works (technically), and include your audit writeup in the documentation. You can do this in any format you want, whether it's a wiki on Github, a text document, or something else.
