@@ -10,8 +10,11 @@
 ## Step 1: Fix the bugs
 
 There are 2 bugs in the code, and it's your job to find them! Here are some hints:
+
 •	One bug is a simple typo.
+
 •	One bug involves an introduction of potential conflict between duplicate IDs.
+
 One of the bugs is severe enough that to-do items can't even be added! 😮
 You'll need to go hunting in the code for these bugs like they're Waldo! Once you find them, you'll fix them because they're preventing the code from functioning properly.
 There are also some improvements in the code that can be made that aren't necessarily bugs. Try to find where loops can be optimized and if there are any logging statements that may not be necessary.
@@ -22,6 +25,7 @@ As mentioned above, you might notice that this project has some tests but defini
 This step may appear to be a bit long and tedious, but it'll save you time and bad surprises later.
 You'll need to run npm install  on the project in order to install the requisite Jasmine materials.
 There's an existing test file called  ControllerSpec.js  in the project, and you should find all instances of the comment below and add tests there.
+
 // TODO: write test
 More specifically, they're on lines #62, #86, #90, #137, #141, #146, #150, #156, and #196 of  ControllerSpec.js  .
 You can go further and other tests if you see fit!
@@ -41,19 +45,26 @@ Simply put, you'll need to write documentation that describes the project, how i
 ## Submit
 
 •	The updated code base with bugs fixed and tests written.
+
 •	Documentation about the project, including your audit writeup, whether it's a wiki on Github, a text document, or something else.
 
 ## Presentation
 
 You'll do an oral presentation of your project with a validator in order to simulate real-life conditions.
 The presentation will be structured as follows:
+
 •	Presentation of your code, tests, and optimizations: 15-20 minutes.
+
 •	Q&A: 10 minutes.
+
 Towards the end of the presentation, the mentor will debrief you for approximately 5 minutes.
 
 ## Skills
 
 •  Optimize the performance of a project using DevTools.
+
 •  Implement unit and functional tests in a web application.
+
 •  Take over an existing JavaScript project.
+
 
