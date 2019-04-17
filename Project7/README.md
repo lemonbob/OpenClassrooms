@@ -1,4 +1,4 @@
-# Project 7 Restaurant Review Site - using ReactJS - [http://reactivereviews.polymathicdesign.com]
+# Project 7 Restaurant Review Site - using ReactJS - [reactivereviews.polymathicdesign.com](http://reactivereviews.polymathicdesign.com)
 
 **Note - the APIKEY has been removed from program files, to run this program you need to enter your own GoogleMaps API key in index.html and Atomic-API.js**
 
