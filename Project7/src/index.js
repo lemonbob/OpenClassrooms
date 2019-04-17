@@ -269,8 +269,9 @@ class StreetMapData extends React.Component {
 		}
 	}
 	render(){
-			let object = Atomic.infoData[this.state.markerData.mNum];
+		let object = Atomic.infoData[this.state.markerData.mNum];
 		if (this.state.markerData.mNum !== -1){
+			if (object !== undefined){
 			return(
 				<div id="popupInfo">
 				<div id="popupInfoContent">
@@ -287,6 +288,20 @@ class StreetMapData extends React.Component {
 				</div>
 				</div>
 			);
+			}else{
+			return(
+			<div id="popupInfo">
+				<div id="popupInfoContent">
+				<div className="popup-header">
+				<div className="popup-add" onClick={() => this.showAddReview()}>{this.state.reviewText}</div>
+				<div className="popup-close" onClick={() => this.hidePopup()}>X</div>
+				</div>
+				<NewRestaurantForm swData={this.state.markerData}></NewRestaurantForm>
+				</div>
+				</div>
+			);	
+			}
+				
 		}
 		else return(<div id="popupInfo"></div>);
 	}
@@ -620,14 +635,14 @@ class ReviewFooter extends React.Component {
 			An OpenClassrooms Project<br></br>
 			By M J Livesey<br></br>
 			PolymathicDesign.com<br></br>
-			Copyright ©2019
+			Copyright©2019
 			</p></div>
 			<div className="footer-item">
 			<p>React Project<br></br>
-			Powered by Atomic<br></br>
+			Powered by ReSTORE<br></br>
 			By M J Livesey<br></br>
 			PolymathicDesign.com<br></br>
-			Copyright ©2019
+			Copyright©2019
 			</p></div>
 			<div className="footer-item"><img src="src/img/oc.svg"></img></div>
 			</div>
