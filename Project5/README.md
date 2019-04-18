@@ -1,10 +1,15 @@
 # Project 5 [roboquote.polymathicdesign.com](http://roboquote.polymathicdesign.com)
 
-**This project demonstrats:** 
+**This project demonstrats:**
+
 **AI advance logic for parsing sentences.**
-**Progresive self-adapting custom XMLHttpRequests (try doing those with observables!)
-**Custom controls to mimic UX/UI of real-life potentiometers
+
+**Progresive self-adapting custom XMLHttpRequests (try doing those with observables!)**
+
+**Custom controls to mimic UX/UI of real-life potentiometers**
+
 **responsive design**
+
 **custom calls to an external API**
 
 >OpenClassrooms Front-end Developer Course: code a random quotation generator.
