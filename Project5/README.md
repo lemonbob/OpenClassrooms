@@ -1,6 +1,6 @@
 # Project 5 [roboquote.polymathicdesign.com](http://roboquote.polymathicdesign.com)
 
-**This project demonstrats:**
+**This project demonstrates:**
 
 **i)AI advance logic for parsing sentences.**
 
