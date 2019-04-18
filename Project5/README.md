@@ -2,15 +2,15 @@
 
 **This project demonstrates:**
 
-**i)AI advance logic for parsing sentences.**
+**i) AI advance logic for parsing sentences.**
 
-**ii)Progresive self-adapting custom XMLHttpRequests (try doing those with observables!)**
+**ii) Progresive self-adapting custom XMLHttpRequests (try doing those with observables!)**
 
-**iii)Custom controls to mimic UX/UI of real-life potentiometers**
+**iii) Custom controls to mimic UX/UI of real-life potentiometers**
 
-**iv)responsive design**
+**iv) Responsive design**
 
-**v)custom calls to an external API**
+**v) Custom calls to an external API using Javascript & PHP**
 
 >OpenClassrooms Front-end Developer Course: code a random quotation generator.
 >
