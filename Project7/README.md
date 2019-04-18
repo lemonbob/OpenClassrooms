@@ -10,9 +10,9 @@
 
 **iii) Custom "source-of-truth" store method called ReSTORE**
 
-**iv) Restful APIs — Google Maps/Places API calls
+**iv) Restful APIs — Google Maps/Places API calls**
 
-**v) Responsive design
+**v) Responsive design**
 
 ## Project brief
 
