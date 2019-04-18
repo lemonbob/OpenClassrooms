@@ -4,7 +4,7 @@
 
 **i) custom coded animations** 
 
-**ii) HTML Canvas API**
+**ii) HTML Canvas API for high speed hardware accelerated graphics**
 
 **iii) JQuery**
 
