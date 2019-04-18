@@ -4,9 +4,9 @@
 
 **i) Bootstrap**
 
-**ii) Overriding Bootstraps limited styles**
+**ii) How to effectively override Bootstrap's limited styles**
 
-**iii) Custom coded carousel in Javascript to emulate a 3D film reel.**
+**iii) Custom coded complex layered carousel in Javascript to emulate a 3D film reel.**
 
 **iv) How touch and mouse controls should be correctly handled with preventDefault()**
 
