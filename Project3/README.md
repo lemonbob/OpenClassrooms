@@ -1,6 +1,16 @@
 # Project 3 - Film Festival Website [boff.polymathicdesign.com](http://boff.polymathicdesign.com)
 
-**In addition to Bootstrap, this project demonstrates a custom carousel coded in Javascript to emulate a 3D film reel.** 
+**This project demonstrates:**
+
+**i) Bootstrap**
+
+**ii) Overriding Bootstraps limited styles**
+
+**iii) Custom coded carousel in Javascript to emulate a 3D film reel.**
+
+**iv) How touch and mouse controls should be correctly handled with preventDefault()**
+
+**v) Javasript coded tab controls, with self-sizing, and self-focus features (coded using ES5 closures)**
 
 
 **Assignment**
