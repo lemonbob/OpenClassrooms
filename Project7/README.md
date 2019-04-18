@@ -2,6 +2,16 @@
 
 **Note - the APIKEY is restricted to my domains, to run this program you need to enter your own GoogleMaps API key in index.html and ReSTORE-API.js**
 
+**This project demonstrates:**
+
+**i) ReactJS**
+
+**ii) Reusable components**
+
+**iii) Custom "source-of-truth" store method called ReSTORE**
+
+## Project brief
+
 >For this project, you have to learn to use external APIs such as Google Maps and Google Places. 
 >That's not all: you will have to integrate all this information in a clear, organized way in your application!
 
