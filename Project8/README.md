@@ -1,6 +1,6 @@
 # PROJECT 8 — Modify an Existing Codebase — TodoMVC
 
-**See todoMVC repository for recoded todo APP that is 50 times faster [todoMVC repo](https://github.com/lemonbob/todoMVC)**
+**See todoMVC repository for recoded todo APP that is 50 times faster — [todoMVC repo](https://github.com/lemonbob/todoMVC)**
 
 **This project demostrates:**
 
