@@ -4,7 +4,7 @@
 
 **i) AI advance logic for parsing sentences.**
 
-**ii) Progresive self-adapting custom XMLHttpRequests (try doing those with observables!)**
+**ii) Progresive self-adapting custom XMLHttpRequests (try doing that with observables!)**
 
 **iii) Custom controls to mimic UX/UI of real-life potentiometers**
 
