@@ -10,6 +10,10 @@
 
 **iii) Custom "source-of-truth" store method called ReSTORE**
 
+**iv) Restful APIs — Google Maps/Places API calls
+
+**v) Responsive design
+
 ## Project brief
 
 >For this project, you have to learn to use external APIs such as Google Maps and Google Places. 
