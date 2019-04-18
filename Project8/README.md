@@ -1,5 +1,21 @@
 # PROJECT 8 — Modify an Existing Codebase — TodoMVC
 
+**See todoMVC repository for recoded todo APP that is 50 times faster**
+
+**This project demostrates:**
+
+**i) Jasmine unit testing & TDD**
+
+**ii) MVC architecture (see todoMVC for correct way to achieve optimum MVC code style)**
+
+**iii) Optimization of code**
+
+**iv) Assessment of an existing project**
+
+**v) Write up of document for perfromance and functional assessment for client**
+
+## Project brief
+
 >In the professional world, you'll often be working on an existing codebase. What to do when you find yourself with someone else's code as part of your own job duties? How can you improve it? 
 >Taking over projects seamlessly and quickly is a skill that will come in handy!
 
