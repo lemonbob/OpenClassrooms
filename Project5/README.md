@@ -12,6 +12,9 @@
 
 **v) Custom calls to an external API using Javascript & PHP**
 
+
+## Project brief
+
 >OpenClassrooms Front-end Developer Course: code a random quotation generator.
 >
 >You will build a random quote generator! The quotes will be randomly constructed by assembling different pieces of a sentence.
