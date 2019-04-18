@@ -1,6 +1,12 @@
 # Project 6 [cyborgarena.polymathicdesign.com](http://cyborgarena.polymathicdesign.com)
 
-**This project demonstrates custom easing animations in HTML Canvas API, JQuery, and object-oriented JavaScript** 
+**This project demonstrates:**
+
+**i) custom coded animations** 
+**ii) HTML Canvas API**
+**iii) JQuery**
+**iv) Object-Oriented JavaScript** 
+**v) How to handle HTML audio autoplay for cross-platform browser compatability (Howler and other 3rd party APIs don't work)**
 
 >In this project, you will create an online game written JavaScript in which 2 players play each turn to compete. 
 
