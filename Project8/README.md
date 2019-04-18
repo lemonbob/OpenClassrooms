@@ -12,7 +12,7 @@
 
 **iv) Assessment of an existing project**
 
-**v) Write up of document for perfromance and functional assessment for client**
+**v) Write up of document for perfromance and functional assessment for client (presentation.pdf)**
 
 ## Project brief
 
