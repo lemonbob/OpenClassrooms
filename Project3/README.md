@@ -12,10 +12,9 @@
 
 **v) Javasript coded tab controls, with self-sizing, and self-focus features (coded using ES5 closures)**
 
+## Project brief
 
-**Assignment**
-
-In this project, you'll be using your HTML and CSS knowledge to build your first static site from scratch! You'll be creating a website for a person in your community who wants to launch an endeavor but isn't a coder themselves. 
+>>In this project, you'll be using your HTML and CSS knowledge to build your first static site from scratch! You'll be creating a website for a person in your community who wants to launch an endeavor but isn't a coder themselves. 
 
 As a developer, you'll often have the chance to be involved in cool projects by building websites for interesting and unique clients!
 
