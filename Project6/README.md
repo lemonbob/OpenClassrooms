@@ -3,10 +3,16 @@
 **This project demonstrates:**
 
 **i) custom coded animations** 
+
 **ii) HTML Canvas API**
+
 **iii) JQuery**
+
 **iv) Object-Oriented JavaScript** 
+
 **v) How to handle HTML audio autoplay for cross-platform browser compatability (Howler and other 3rd party APIs don't work)**
+
+## Project brief
 
 >In this project, you will create an online game written JavaScript in which 2 players play each turn to compete. 
 
